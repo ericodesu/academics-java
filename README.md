@@ -28,5 +28,5 @@ This project consists of mocking a system partially used in stores.
   - A few of ```.jar``` files that holds extensions - _Already included in the project solution_.
   
   ### Installation information
-  
-  Unzip and extract the ```.jar``` files inside the ```jar-extensions.zip``` files inside the same ```{ROOT_DIRECTORY}\extensions``` folder, open the IDE then compile & run it it.
+
+  There isn't so much into it, just download the ```IDE```, compile it and run it;
