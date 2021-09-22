@@ -1,0 +1,12 @@
+Product ID:1
+Product Name:1
+Product Description:1
+Product Production Price:1
+Product Selling Price:1
+---------------------------------------------
+Product ID:1
+Product Name:1
+Product Description:1
+Product Production Price:1
+Product Selling Price:1
+---------------------------------------------
