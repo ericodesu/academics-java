@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="proprietario" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1e65fa98-7b6e-45f3-a35d-87ba05522639">
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     proprietarios.`id_proprietario` AS proprietarios_id_proprietario,
+     proprietarios.`nome` AS proprietarios_nome,
+     proprietarios.`cpf` AS proprietarios_cpf,
+     proprietarios.`telefone` AS proprietarios_telefone,
+     proprietarios.`email` AS proprietarios_email,
+     proprietarios.`data` AS proprietarios_data,
+     proprietarios.`apartamento` AS proprietarios_apartamento,
+     proprietarios.`bloco` AS proprietarios_bloco
+FROM
+     `proprietarios` proprietarios]]>
+	</queryString>
+	<field name="proprietarios_id_proprietario" class="java.lang.Integer"/>
+	<field name="proprietarios_nome" class="java.lang.String"/>
+	<field name="proprietarios_cpf" class="java.lang.String"/>
+	<field name="proprietarios_telefone" class="java.lang.String"/>
+	<field name="proprietarios_email" class="java.lang.String"/>
+	<field name="proprietarios_data" class="java.sql.Date"/>
+	<field name="proprietarios_apartamento" class="java.lang.Integer"/>
+	<field name="proprietarios_bloco" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="164" height="126" uuid="6f238d06-0837-4d47-aec3-535568f7d212"/>
+				<imageExpression><![CDATA["coffee.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="270" y="0" width="263" height="62" uuid="2a66db1e-47ea-4430-8e09-5adda52bfbdb"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="303" y="62" width="196" height="22" uuid="9cfcc7b5-d1d4-43ba-9b54-ebf2d74f641b"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee SubTitle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="94" width="383" height="42" uuid="85ca8aed-8e16-4a4d-a4af-a99fc95fe2d7"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="633" y="-73" width="219" height="209" uuid="45771e88-2381-4c42-9b9c-26b56832bb4f"/>
+				<imageExpression><![CDATA["coffee_stain.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="06178064-1964-4388-b996-d11419d589b3"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="100" height="15" forecolor="#736343" uuid="cb449e5f-27cb-4ebe-879a-6e68d92bc04e"/>
+				<text><![CDATA[proprietarios_id_proprietario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="100" y="0" width="100" height="15" forecolor="#736343" uuid="0517c354-e41d-4212-896a-55451e23ebb7"/>
+				<text><![CDATA[proprietarios_nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="200" y="0" width="100" height="15" forecolor="#736343" uuid="21328777-1bff-451a-94b3-77c24b84d553"/>
+				<text><![CDATA[proprietarios_cpf]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="300" y="0" width="100" height="15" forecolor="#736343" uuid="6597e07b-ad3f-475f-80c6-7dcf99d7efaf"/>
+				<text><![CDATA[proprietarios_telefone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="400" y="0" width="100" height="15" forecolor="#736343" uuid="e805ca03-64e0-4286-a7d1-4e94667da0ee"/>
+				<text><![CDATA[proprietarios_email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="500" y="0" width="100" height="15" forecolor="#736343" uuid="f74e473d-2b46-48ab-8974-21cfac400269"/>
+				<text><![CDATA[proprietarios_data]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="600" y="0" width="100" height="15" forecolor="#736343" uuid="0abaa422-730e-404f-b50e-673d4fc6cd16"/>
+				<text><![CDATA[proprietarios_apartamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="700" y="0" width="100" height="15" forecolor="#736343" uuid="5f699ca9-68c8-4f94-becc-521a7f085e2d"/>
+				<text><![CDATA[proprietarios_bloco]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="1062aaab-f28a-42c6-9207-4cf626a5aac1"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="100" height="15" uuid="6781d934-1820-405d-96e8-c400413c493c"/>
+					<textFieldExpression><![CDATA[$F{proprietarios_id_proprietario}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="100" y="0" width="100" height="15" uuid="acb51a43-d2e4-492d-9473-71928ace132f"/>
+					<textFieldExpression><![CDATA[$F{proprietarios_nome}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="200" y="0" width="100" height="15" uuid="d847a748-1bfa-4218-b842-6ca8852d044a"/>
+					<textFieldExpression><![CDATA[$F{proprietarios_cpf}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="300" y="0" width="100" height="15" uuid="7b7458f0-2b7b-44cb-ae40-6afac7e6f58f"/>
+					<textFieldExpression><![CDATA[$F{proprietarios_telefone}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="400" y="0" width="100" height="15" uuid="bb74db62-5792-444c-931b-208e52a496e6"/>
+					<textFieldExpression><![CDATA[$F{proprietarios_email}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="500" y="0" width="100" height="15" uuid="78ac99e6-5f0e-48ee-8006-d37aa5a7d613"/>
+					<textFieldExpression><![CDATA[$F{proprietarios_data}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="600" y="0" width="100" height="15" uuid="0d298054-5f1d-4003-9e8d-6fa89c1eaf96"/>
+					<textFieldExpression><![CDATA[$F{proprietarios_apartamento}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="700" y="0" width="100" height="15" uuid="d377c814-eb9e-460d-829b-fc303c89654c"/>
+					<textFieldExpression><![CDATA[$F{proprietarios_bloco}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="446d119f-f5fc-46a9-955b-f50ee6d1ce4b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="9c4bd57e-1056-4842-84fd-6ef9acb84ae8"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="58a92a95-ead6-4aa5-abbd-8caaf27cf3e8"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="1730ddb3-53d7-4302-b4b4-27f2f33bfd17"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="5c8dd346-ff2e-4dc5-b9ed-d92b5ae9bf07"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
