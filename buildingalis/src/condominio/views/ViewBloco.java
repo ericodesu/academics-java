@@ -30,7 +30,7 @@ public class ViewBloco extends javax.swing.JFrame implements Viewable {
                 registro.getIdBloco(),
                 registro.getDescricao(),
                 registro.getQuantidadeAndares(),
-                registro.getQuantidadeAndares()
+                registro.getQuantidadeApartamentoAndares()
             });
         });
     }
