@@ -1,15 +1,19 @@
 package condominio;
 
-import condominio.View.ViewHome;
-import common.JanelaHandler;
+import condominio.views.ViewHome;
+import common.handlers.HandlerJanela;
+import common.handlers.HandlerMigration;
 
 public class Condominio {
     public static void main(String[] args) {
-        JanelaHandler janelaHandler = new JanelaHandler();
+        HandlerMigration handlerMigration = new HandlerMigration();
+        handlerMigration.configurarAmbiente();
 
         ViewHome homeView = new ViewHome();
-        
-        janelaHandler.configurarJanela(homeView);
-        janelaHandler.rederizarJanela(homeView);
+
+        HandlerJanela handlerJanela = new HandlerJanela();
+
+        handlerJanela.configurarJanela(homeView);
+        handlerJanela.rederizarJanela(homeView);
     }
 }
