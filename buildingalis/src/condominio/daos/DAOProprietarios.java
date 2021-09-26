@@ -1,6 +1,5 @@
 package condominio.daos;
 
-import common.handlers.HandlerConexao;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,13 +9,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+import common.handlers.HandlerConexao;
 import condominio.models.ModelProprietario;
 import common.interfaces.CRUDable;
 
 public class DAOProprietarios implements CRUDable<ModelProprietario> {  
     @Override  
     public void Inserir(ModelProprietario modelo) {
-        String query = "INSERT INTO proprietarios (nome,cpf,telefone,email,data,apartamento,bloco) VALUES (?,?,?,?,?,?,?)";
+        String query = "INSERT INTO proprietarios (nome,cpf,telefone,email,data_nascimento,apartamento,bloco) VALUES (?,?,?,?,?,?,?)";
 
         try {
 	    this._stmt = this._CONEXAO.prepareStatement(query);
@@ -38,7 +38,7 @@ public class DAOProprietarios implements CRUDable<ModelProprietario> {
 
     @Override
     public void Alterar(ModelProprietario modelo) {
-        String query = "UPDATE proprietarios SET nome=?,cpf=?,telefone=?,email=?,data=?,apartamento=?,bloco=? WHERE id_proprietario=?";
+        String query = "UPDATE proprietarios SET nome=?,cpf=?,telefone=?,email=?,data_nascimento=?,apartamento=?,bloco=? WHERE id_proprietario=?";
 
         try {
 	    this._stmt = this._CONEXAO.prepareStatement(query);
@@ -96,7 +96,7 @@ public class DAOProprietarios implements CRUDable<ModelProprietario> {
 	        modelo.setCpf(this._rs.getString("cpf"));
 	        modelo.setTelefone(this._rs.getString("telefone"));
 	        modelo.setEmail(this._rs.getString("email"));
-	        modelo.setData(this._rs.getDate("data"));
+	        modelo.setData(this._rs.getDate("data_nascimento"));
 	        modelo.setApartamento(this._rs.getInt("apartamento"));
 	        modelo.setBloco(this._rs.getInt("bloco"));
 

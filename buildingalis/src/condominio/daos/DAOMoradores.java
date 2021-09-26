@@ -1,6 +1,5 @@
 package condominio.daos;
 
-import common.handlers.HandlerConexao;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+import common.handlers.HandlerConexao;
 import condominio.models.ModelMorador;
 import common.interfaces.CRUDable;
 
@@ -17,7 +17,7 @@ import common.interfaces.CRUDable;
  *
  * @author Erick Frederick
  */
-public class DAOMorador implements CRUDable<ModelMorador> {
+public class DAOMoradores implements CRUDable<ModelMorador> {
     @Override
     public void Inserir(ModelMorador modelo) {
         String query = "INSERT INTO moradores (nome,cpf,telefone,email,apartamento,torre) VALUES (?,?,?,?,?,?)";

@@ -1,6 +1,5 @@
 package condominio.daos;
 
-import common.handlers.HandlerConexao;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+import common.handlers.HandlerConexao;
 import common.interfaces.CRUDable;
 import condominio.models.ModelCarro;
 

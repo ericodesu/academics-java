@@ -1,5 +1,9 @@
 package common.enums;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author Erick Frederick
@@ -41,31 +45,27 @@ public enum EnumCamposTabelasValidas {
         "cod_documento" + EnumTiposCamposMysql.INT.getNomeTipoCampo(),
         "id_morador" + EnumTiposCamposMysql.INT.getNomeTipoCampo()
     }),
-    FUNCIONARIOS(new String[]{
+    FUNCIONARIOS(gerarPessoaFisica(new String[]{
         "id_funcionario" + EnumTiposCamposMysql.INT_PK.getNomeTipoCampo(),
         "cargo" + EnumTiposCamposMysql.VAR_CHAR.getNomeTipoCampo() + "(20)",
         "salario" + EnumTiposCamposMysql.DOUBLE.getNomeTipoCampo()
-    }),
+    })),
     GARAGENS(new String[]{
         "id_garagem" + EnumTiposCamposMysql.INT_PK.getNomeTipoCampo(),
         "numero" + EnumTiposCamposMysql.INT.getNomeTipoCampo(),
         "torre" + EnumTiposCamposMysql.INT.getNomeTipoCampo()
     }),
-    MORADORES(new String[]{
+    MORADORES(gerarPessoaFisica(new String[]{
         "id_morador" + EnumTiposCamposMysql.INT_PK.getNomeTipoCampo(),
         "apartamento" + EnumTiposCamposMysql.INT.getNomeTipoCampo(),
         "torre" + EnumTiposCamposMysql.INT.getNomeTipoCampo()
-    }),
-    PROPRIETARIOS(new String[]{
+    })),
+    PROPRIETARIOS(gerarPessoaFisica(new String[]{
         "id_proprietario" + EnumTiposCamposMysql.INT_PK.getNomeTipoCampo(),
-        "nome" + EnumTiposCamposMysql.VAR_CHAR.getNomeTipoCampo() + "(200)",
-        "cpf" + EnumTiposCamposMysql.VAR_CHAR.getNomeTipoCampo() + "(14)",
-        "telefone" + EnumTiposCamposMysql.VAR_CHAR.getNomeTipoCampo() + "(20)",
-        "email" + EnumTiposCamposMysql.VAR_CHAR.getNomeTipoCampo() + "(150)",
         "data_nascimento" + EnumTiposCamposMysql.DATE.getNomeTipoCampo(),
         "apartamento" + EnumTiposCamposMysql.INT.getNomeTipoCampo(),
         "bloco" + EnumTiposCamposMysql.INT.getNomeTipoCampo()
-    }),
+    })),
     SERVICOS(new String[]{
         "id_servico" + EnumTiposCamposMysql.INT_PK.getNomeTipoCampo(),
         "descricao" + EnumTiposCamposMysql.VAR_CHAR.getNomeTipoCampo() + "(20)",
@@ -78,12 +78,28 @@ public enum EnumCamposTabelasValidas {
     });
 
     public String[] getCamposTabela() {
-        return this._camposTabela;
+        return this._CAMPOS_TABELA;
     }
 
-    private EnumCamposTabelasValidas(final String[] camposTabela) {
-        this._camposTabela = camposTabela;
+    private EnumCamposTabelasValidas(final String[] CAMPOS_TABELA) {
+        this._CAMPOS_TABELA = CAMPOS_TABELA;
     }
 
-    private final String[] _camposTabela;
+    private static String[] gerarPessoaFisica(String[] campos){
+        final String[] _CAMPO_PESSOA_FISICA = {
+            "nome" + EnumTiposCamposMysql.VAR_CHAR.getNomeTipoCampo() + "(50)",
+            "cpf" + EnumTiposCamposMysql.VAR_CHAR.getNomeTipoCampo() + "(11)",
+            "telefone" + EnumTiposCamposMysql.VAR_CHAR.getNomeTipoCampo() + "(11)",
+            "email" + EnumTiposCamposMysql.VAR_CHAR.getNomeTipoCampo() + "(62)"
+        };
+        List<String> listaCampos = new ArrayList<>(Arrays.asList(campos));
+
+        listaCampos.addAll(1, Arrays.asList(_CAMPO_PESSOA_FISICA));
+
+        String[] pessoaFisica = new String[0];
+
+        return listaCampos.toArray(pessoaFisica);
+    }
+
+    private final String[] _CAMPOS_TABELA;
 }
