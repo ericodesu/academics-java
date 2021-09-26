@@ -11,6 +11,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMSAgenda">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/view/icons/agenda.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Agenda"/>
               </Properties>
               <Events>
@@ -34,6 +37,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMSAreasLazer">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/view/icons/area_lazer.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Areas de Lazer"/>
               </Properties>
               <Events>
@@ -57,6 +63,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMSCorreios">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/view/icons/correios.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Correios"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
@@ -70,6 +79,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMSFuncionarios">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/view/icons/funcionario.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Funcion&#xe1;rios"/>
               </Properties>
               <Events>
@@ -93,6 +105,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMSMoradores">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/view/icons/morador.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Moradores"/>
               </Properties>
               <Events>
@@ -116,6 +131,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMSServicos">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/view/icons/servico.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Servi&#xe7;os"/>
               </Properties>
               <Events>
@@ -139,6 +157,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMSTorres">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/view/icons/torres.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Torres"/>
               </Properties>
               <Events>

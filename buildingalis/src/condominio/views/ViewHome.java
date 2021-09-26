@@ -81,6 +81,7 @@ public class ViewHome extends javax.swing.JFrame {
 
         jMenu1.setText("Sistema");
 
+        jMSAgenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/agenda.png"))); // NOI18N
         jMSAgenda.setText("Agenda");
         jMSAgenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +101,7 @@ public class ViewHome extends javax.swing.JFrame {
         jMenu1.add(jMSApartamentos);
         jMenu1.add(jMSSeparator2);
 
+        jMSAreasLazer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/area_lazer.png"))); // NOI18N
         jMSAreasLazer.setText("Areas de Lazer");
         jMSAreasLazer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +121,7 @@ public class ViewHome extends javax.swing.JFrame {
         jMenu1.add(jMSBlocos);
         jMenu1.add(jMSSeparator4);
 
+        jMSCorreios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/correios.png"))); // NOI18N
         jMSCorreios.setText("Correios");
         jMSCorreios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMSCorreios.addActionListener(new java.awt.event.ActionListener() {
@@ -129,6 +132,7 @@ public class ViewHome extends javax.swing.JFrame {
         jMenu1.add(jMSCorreios);
         jMenu1.add(jMSSeparator5);
 
+        jMSFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/funcionario.png"))); // NOI18N
         jMSFuncionarios.setText("Funcionários");
         jMSFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,6 +152,7 @@ public class ViewHome extends javax.swing.JFrame {
         jMenu1.add(jMSGaragens);
         jMenu1.add(jMSSeparator7);
 
+        jMSMoradores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/morador.png"))); // NOI18N
         jMSMoradores.setText("Moradores");
         jMSMoradores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,6 +172,7 @@ public class ViewHome extends javax.swing.JFrame {
         jMenu1.add(jMSProprietarios);
         jMenu1.add(jMSSeparator9);
 
+        jMSServicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/servico.png"))); // NOI18N
         jMSServicos.setText("Serviços");
         jMSServicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,6 +192,7 @@ public class ViewHome extends javax.swing.JFrame {
         jMenu1.add(jMSCarros);
         jMenu1.add(jMSSeparator11);
 
+        jMSTorres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/torres.png"))); // NOI18N
         jMSTorres.setText("Torres");
         jMSTorres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
