@@ -13,12 +13,12 @@ public class ModelCorreio {
         this._idCorreio = idCorreio;
     }
 
-    public String getCodDocumento() {
-        return _codDocumento;
+    public int getCodigoDocumento() {
+        return _codigoDocumento;
     }
 
-    public void setCodDocumento(String codDocumento) {
-        this._codDocumento = codDocumento;
+    public void setCodigoDocumento(int codigoDocumento) {
+        this._codigoDocumento = codigoDocumento;
     }
 
     public int getIdMorador() {
@@ -30,6 +30,6 @@ public class ModelCorreio {
     }
 
     private int _idCorreio;
-    private String _codDocumento;
+    private int _codigoDocumento;
     private int _idMorador;
 }

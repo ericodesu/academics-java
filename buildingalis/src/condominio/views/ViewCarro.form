@@ -24,53 +24,49 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLPlaca" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTPlaca" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTId" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jBInserir" alignment="0" pref="205" max="32767" attributes="0"/>
+                          <Component id="jLId" max="32767" attributes="0"/>
+                      </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jLId" min="-2" pref="185" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLMarca" min="-2" pref="250" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jTCor" max="32767" attributes="0"/>
+                                      <Component id="jLCor" pref="250" max="32767" attributes="0"/>
+                                      <Component id="jTMarca" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jLPlaca" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTPlaca" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTId" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jBInserir" alignment="0" pref="185" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLMarca" min="-2" pref="250" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jTCor" max="32767" attributes="0"/>
-                                              <Component id="jLCor" pref="250" max="32767" attributes="0"/>
-                                              <Component id="jTMarca" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
-                                      <Component id="jBAlterar" min="-2" pref="185" max="-2" attributes="0"/>
-                                      <EmptySpace pref="73" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace pref="94" max="32767" attributes="0"/>
+                              <Component id="jBAlterar" pref="194" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLModelo" max="32767" attributes="0"/>
                           <Component id="jTIdApartamento" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLIdApartamento" alignment="1" pref="240" max="32767" attributes="0"/>
+                          <Component id="jLIdApartamento" alignment="1" max="32767" attributes="0"/>
                           <Component id="jTModelo" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jBDeletar" alignment="1" min="-2" pref="185" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace pref="73" max="32767" attributes="0"/>
+                              <Component id="jBDeletar" pref="207" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

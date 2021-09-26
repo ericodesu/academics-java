@@ -7,19 +7,21 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
 
 import common.handlers.HandlerJanela;
+import common.handlers.HandlerConexao;
 import condominio.models.ModelAgenda;
 import condominio.models.ModelApartamento;
 import condominio.models.ModelAreaLazer;
-import condominio.models.ModelProprietario;
 import condominio.models.ModelBloco;
 import condominio.models.ModelCarro;
-import common.handlers.HandlerConexao;
+import condominio.models.ModelCorreio;
+import condominio.models.ModelProprietario;
 import condominio.daos.DAOAgendas;
 import condominio.daos.DAOApartamentos;
 import condominio.daos.DAOAreasLazer;
-import condominio.daos.DAOProprietarios;
 import condominio.daos.DAOBlocos;
 import condominio.daos.DAOCarros;
+import condominio.daos.DAOCorreios;
+import condominio.daos.DAOProprietarios;
 
 /**
  *
@@ -61,6 +63,7 @@ public class ViewHome extends javax.swing.JFrame {
         jMSApartamentos = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMSAreasLazer = new javax.swing.JMenuItem();
+        jMSCorreios = new javax.swing.JMenuItem();
         jMSProprietarios = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMSBlocos = new javax.swing.JMenuItem();
@@ -105,6 +108,15 @@ public class ViewHome extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMSAreasLazer);
+
+        jMSCorreios.setText("Correios");
+        jMSCorreios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jMSCorreios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMSCorreiosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMSCorreios);
 
         jMSProprietarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/condominio/views/prop.png"))); // NOI18N
         jMSProprietarios.setText("Proprietarios");
@@ -257,6 +269,13 @@ public class ViewHome extends javax.swing.JFrame {
         this._handlerJanela.rederizarJanela(viewAreaLazer);
     }//GEN-LAST:event_jMSAreasLazerActionPerformed
 
+    private void jMSCorreiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSCorreiosActionPerformed
+        ViewCorreio viewCorreio = new ViewCorreio(new ModelCorreio(), new DAOCorreios());
+
+        this._handlerJanela.configurarJanela(viewCorreio);
+        this._handlerJanela.rederizarJanela(viewCorreio);
+    }//GEN-LAST:event_jMSCorreiosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -294,6 +313,7 @@ public class ViewHome extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMSAreasLazer;
     private javax.swing.JMenuItem jMSBlocos;
     private javax.swing.JMenuItem jMSCarros;
+    private javax.swing.JMenuItem jMSCorreios;
     private javax.swing.JMenuItem jMSGaragens;
     private javax.swing.JMenuItem jMSProprietarios;
     private javax.swing.JMenu jMenu1;

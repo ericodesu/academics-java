@@ -25,7 +25,7 @@ public class DAOCorreios implements CRUDable<ModelCorreio> {
         try {
             this._stmt = this._CONEXAO.prepareStatement(query);
 
-            this._stmt.setString(1, modelo.getCodDocumento());
+            this._stmt.setInt(1, modelo.getCodigoDocumento());
             this._stmt.setInt(2, modelo.getIdMorador());
 
             this._stmt.execute();
@@ -43,7 +43,7 @@ public class DAOCorreios implements CRUDable<ModelCorreio> {
         try {
             this._stmt = this._CONEXAO.prepareStatement(query);
 
-            this._stmt.setString(1, modelo.getCodDocumento());
+            this._stmt.setInt(1, modelo.getCodigoDocumento());
             this._stmt.setInt(2, modelo.getIdMorador());
             this._stmt.setInt(3, modelo.getIdCorreio());
 
@@ -86,7 +86,7 @@ public class DAOCorreios implements CRUDable<ModelCorreio> {
             while(this._rs.next()) {
 	        ModelCorreio modelo = new ModelCorreio();
 
-                modelo.setCodDocumento(this._rs.getString("documento"));
+                modelo.setCodigoDocumento(this._rs.getInt("cod_documento"));
 	        modelo.setIdMorador(this._rs.getInt("id_morador"));
                 modelo.setIdCorreio(this._rs.getInt("id_correio"));
 
