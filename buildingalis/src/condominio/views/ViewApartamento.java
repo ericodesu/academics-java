@@ -185,7 +185,7 @@ public class ViewApartamento extends javax.swing.JFrame implements Viewable {
         getContentPane().add(jTNumero);
         jTNumero.setBounds(160, 90, 100, 20);
 
-        jBSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/condominio/views/exit.png"))); // NOI18N
+        jBSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/exit.png"))); // NOI18N
         jBSair.setText("Sair");
         jBSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

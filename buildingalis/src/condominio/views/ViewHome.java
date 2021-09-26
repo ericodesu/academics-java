@@ -91,7 +91,7 @@ public class ViewHome extends javax.swing.JFrame {
         });
         jMenu1.add(jMSAgenda);
 
-        jMSApartamentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/condominio/views/building.png"))); // NOI18N
+        jMSApartamentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/building.png"))); // NOI18N
         jMSApartamentos.setText("Apartamentos");
         jMSApartamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,7 +118,7 @@ public class ViewHome extends javax.swing.JFrame {
         });
         jMenu1.add(jMSCorreios);
 
-        jMSProprietarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/condominio/views/prop.png"))); // NOI18N
+        jMSProprietarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/prop.png"))); // NOI18N
         jMSProprietarios.setText("Proprietarios");
         jMSProprietarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,7 +128,7 @@ public class ViewHome extends javax.swing.JFrame {
         jMenu1.add(jMSProprietarios);
         jMenu1.add(jSeparator3);
 
-        jMSBlocos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/condominio/views/bloco.png"))); // NOI18N
+        jMSBlocos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/bloco.png"))); // NOI18N
         jMSBlocos.setText("Blocos");
         jMSBlocos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +138,7 @@ public class ViewHome extends javax.swing.JFrame {
         jMenu1.add(jMSBlocos);
         jMenu1.add(jSeparator2);
 
-        jMSGaragens.setIcon(new javax.swing.ImageIcon(getClass().getResource("/condominio/views/garage.png"))); // NOI18N
+        jMSGaragens.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/garage.png"))); // NOI18N
         jMSGaragens.setText("Garagens");
         jMSGaragens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,7 +148,7 @@ public class ViewHome extends javax.swing.JFrame {
         jMenu1.add(jMSGaragens);
         jMenu1.add(jSeparator1);
 
-        jMSCarros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/condominio/views/car.png"))); // NOI18N
+        jMSCarros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/car.png"))); // NOI18N
         jMSCarros.setText("Veículos");
         jMSCarros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

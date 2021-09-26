@@ -20,7 +20,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMSApartamentos">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/condominio/views/building.png"/>
+                  <Image iconType="3" name="/resources/view/icons/building.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Apartamentos"/>
               </Properties>
@@ -52,7 +52,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMSProprietarios">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/condominio/views/prop.png"/>
+                  <Image iconType="3" name="/resources/view/icons/prop.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Proprietarios"/>
               </Properties>
@@ -65,7 +65,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMSBlocos">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/condominio/views/bloco.png"/>
+                  <Image iconType="3" name="/resources/view/icons/bloco.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Blocos"/>
               </Properties>
@@ -78,7 +78,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMSGaragens">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/condominio/views/garage.png"/>
+                  <Image iconType="3" name="/resources/view/icons/garage.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Garagens"/>
               </Properties>
@@ -91,7 +91,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMSCarros">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/condominio/views/car.png"/>
+                  <Image iconType="3" name="/resources/view/icons/car.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ve&#xed;culos"/>
               </Properties>
