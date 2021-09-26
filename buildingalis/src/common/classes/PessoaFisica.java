@@ -1,5 +1,7 @@
 package common.classes;
 
+import common.handlers.HandlerInput;
+
 /**
  *
  * @author Erick Frederick
@@ -18,7 +20,7 @@ public class PessoaFisica {
     }
 
     public void setCpf(String cpf) {
-        this._cpf = cpf;
+        this._cpf = this._HANDLER_INPUT.higienizarCpf(cpf);
     }
 
     public String getTelefone() {
@@ -26,7 +28,7 @@ public class PessoaFisica {
     }
 
     public void setTelefone(String telefone) {
-        this._telefone = telefone;
+        this._telefone = this._HANDLER_INPUT.higienizarTelefone(telefone);
     }
 
     public String getEmail() {
@@ -41,4 +43,5 @@ public class PessoaFisica {
     private String _cpf;
     private String _telefone;
     private String _email;
+    private final HandlerInput _HANDLER_INPUT = new HandlerInput();
 }
