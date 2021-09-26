@@ -4,7 +4,6 @@ import java.sql.Date;
 import javax.swing.table.DefaultTableModel;
 
 import common.handlers.HandlerJanela;
-import common.handlers.HandlerInput;
 import common.interfaces.Viewable;
 import condominio.models.ModelAgenda;
 import condominio.daos.DAOAgendas;
@@ -62,7 +61,7 @@ public class ViewAgenda extends javax.swing.JFrame implements Viewable {
             this._MODELO.setIdAgenda(idAgenda);
         }
 
-        String dataRegistro = this._HANDLER_INPUT.higienizarData(jTDataRegistro.getText().trim());
+        String dataRegistro = jTDataRegistro.getText().trim();
         int idMorador = Integer.parseInt(jTIdMorador.getText().trim());
 
         this._MODELO.setData(Date.valueOf(dataRegistro));
@@ -70,7 +69,6 @@ public class ViewAgenda extends javax.swing.JFrame implements Viewable {
     }
  
     private final HandlerJanela _HANDLER_JANELA = new HandlerJanela();
-    private final HandlerInput _HANDLER_INPUT = new HandlerInput();
     private final ModelAgenda _MODELO;
     private final DAOAgendas _DAO;
 
@@ -168,8 +166,6 @@ public class ViewAgenda extends javax.swing.JFrame implements Viewable {
         jBGravar.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
         jBGravar.setForeground(new java.awt.Color(232, 232, 232));
         jBGravar.setText("Gravar");
-        jBGravar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jBGravar.setBorderPainted(false);
         jBGravar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBGravar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,8 +177,6 @@ public class ViewAgenda extends javax.swing.JFrame implements Viewable {
         jBAlterar.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
         jBAlterar.setForeground(new java.awt.Color(232, 232, 232));
         jBAlterar.setText("Alterar");
-        jBAlterar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jBAlterar.setBorderPainted(false);
         jBAlterar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,8 +188,6 @@ public class ViewAgenda extends javax.swing.JFrame implements Viewable {
         jBDeletar.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
         jBDeletar.setForeground(new java.awt.Color(232, 232, 232));
         jBDeletar.setText("Deletar");
-        jBDeletar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jBDeletar.setBorderPainted(false);
         jBDeletar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,13 +198,12 @@ public class ViewAgenda extends javax.swing.JFrame implements Viewable {
         jTDataRegistro.setBackground(new java.awt.Color(207, 207, 207));
         jTDataRegistro.setBorder(null);
         try {
-            jTDataRegistro.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####/##/##")));
+            jTDataRegistro.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         jTDataRegistro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTDataRegistro.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        jTDataRegistro.setNavigationFilter(null);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

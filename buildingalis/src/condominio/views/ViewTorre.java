@@ -145,7 +145,6 @@ public class ViewTorre extends javax.swing.JFrame implements Viewable {
         jBInserir.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
         jBInserir.setForeground(new java.awt.Color(232, 232, 232));
         jBInserir.setText("Inserir");
-        jBInserir.setBorder(null);
         jBInserir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,7 +156,6 @@ public class ViewTorre extends javax.swing.JFrame implements Viewable {
         jBAlterar.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
         jBAlterar.setForeground(new java.awt.Color(232, 232, 232));
         jBAlterar.setText("Altera");
-        jBAlterar.setBorder(null);
         jBAlterar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +167,6 @@ public class ViewTorre extends javax.swing.JFrame implements Viewable {
         jBDeletar.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
         jBDeletar.setForeground(new java.awt.Color(232, 232, 232));
         jBDeletar.setText("Deletar");
-        jBDeletar.setBorder(null);
         jBDeletar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

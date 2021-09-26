@@ -354,9 +354,6 @@
           <Color blue="e8" green="e8" red="e8" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Inserir"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
-        </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>
         </Property>
@@ -377,9 +374,6 @@
           <Color blue="e8" green="e8" red="e8" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Alterar"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
-        </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>
         </Property>
@@ -400,9 +394,6 @@
           <Color blue="e8" green="e8" red="e8" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Deletar"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
-        </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>
         </Property>

@@ -37,13 +37,12 @@ public class ViewApartamento extends javax.swing.JFrame implements Viewable {
     @Override
     public void limpaCamposDeEntrada() {
         this._HANDLER_JANELA.limparListaDeInput(new javax.swing.JTextField[]{
-            jTCodigo,
+            jTId,
             jTNumero,
             jTAndar,
             jTBloco,
             jTQuantidadeQuartos,
-            jTMetragem,
-            jTNumero
+            jTMetragem
         });
 
         jTNumero.requestFocus();
@@ -58,7 +57,7 @@ public class ViewApartamento extends javax.swing.JFrame implements Viewable {
     @Override
     public void atualizaValoresModelo(Boolean atualizaOId) {
         if(atualizaOId) {
-            int idApartamento = Integer.parseInt(jTCodigo.getText().trim());
+            int idApartamento = Integer.parseInt(jTId.getText().trim());
 
             this._MODELO.setIdApartamento(idApartamento);
         }
@@ -85,12 +84,12 @@ public class ViewApartamento extends javax.swing.JFrame implements Viewable {
     private void initComponents() {
 
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jLCodigo = new javax.swing.JLabel();
+        jLId = new javax.swing.JLabel();
         jLAndar = new javax.swing.JLabel();
         jLBloco = new javax.swing.JLabel();
         jLQuantidadeQuartos = new javax.swing.JLabel();
         jLMetragem = new javax.swing.JLabel();
-        jTCodigo = new javax.swing.JTextField();
+        jTId = new javax.swing.JTextField();
         jTAndar = new javax.swing.JTextField();
         jTBloco = new javax.swing.JTextField();
         jTQuantidadeQuartos = new javax.swing.JTextField();
@@ -101,54 +100,68 @@ public class ViewApartamento extends javax.swing.JFrame implements Viewable {
         jBAlterar = new javax.swing.JButton();
         jLNumero = new javax.swing.JLabel();
         jTNumero = new javax.swing.JTextField();
-        jBSair = new javax.swing.JButton();
         jBDeletar = new javax.swing.JButton();
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLCodigo.setText("Codigo");
-        getContentPane().add(jLCodigo);
-        jLCodigo.setBounds(50, 60, 33, 14);
+        jLId.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
+        jLId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLId.setText("ID");
 
+        jLAndar.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
+        jLAndar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLAndar.setText("Andar");
-        getContentPane().add(jLAndar);
-        jLAndar.setBounds(290, 60, 29, 14);
 
+        jLBloco.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
+        jLBloco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLBloco.setText("Bloco");
-        getContentPane().add(jLBloco);
-        jLBloco.setBounds(50, 130, 25, 14);
 
+        jLQuantidadeQuartos.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
+        jLQuantidadeQuartos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLQuantidadeQuartos.setText("Quantidade Quartos");
-        getContentPane().add(jLQuantidadeQuartos);
-        jLQuantidadeQuartos.setBounds(140, 130, 98, 14);
 
+        jLMetragem.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
+        jLMetragem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLMetragem.setText("Metragem");
-        getContentPane().add(jLMetragem);
-        jLMetragem.setBounds(290, 130, 80, 14);
 
-        jTCodigo.setEnabled(false);
-        getContentPane().add(jTCodigo);
-        jTCodigo.setBounds(50, 90, 40, 20);
-        getContentPane().add(jTAndar);
-        jTAndar.setBounds(280, 90, 100, 20);
-        getContentPane().add(jTBloco);
-        jTBloco.setBounds(40, 160, 90, 20);
-        getContentPane().add(jTQuantidadeQuartos);
-        jTQuantidadeQuartos.setBounds(140, 160, 90, 20);
-        getContentPane().add(jTMetragem);
-        jTMetragem.setBounds(290, 160, 90, 20);
+        jTId.setEditable(false);
+        jTId.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+        jTId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTId.setBorder(null);
+        jTId.setEnabled(false);
 
+        jTAndar.setBackground(new java.awt.Color(207, 207, 207));
+        jTAndar.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+        jTAndar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTAndar.setBorder(null);
+
+        jTBloco.setBackground(new java.awt.Color(207, 207, 207));
+        jTBloco.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+        jTBloco.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTBloco.setBorder(null);
+
+        jTQuantidadeQuartos.setBackground(new java.awt.Color(207, 207, 207));
+        jTQuantidadeQuartos.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+        jTQuantidadeQuartos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTQuantidadeQuartos.setBorder(null);
+
+        jTMetragem.setBackground(new java.awt.Color(207, 207, 207));
+        jTMetragem.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+        jTMetragem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTMetragem.setBorder(null);
+
+        jBInserir.setBackground(new java.awt.Color(85, 179, 59));
+        jBInserir.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
+        jBInserir.setForeground(new java.awt.Color(232, 232, 232));
         jBInserir.setText("Gravar");
+        jBInserir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBInserirActionPerformed(evt);
             }
         });
-        getContentPane().add(jBInserir);
-        jBInserir.setBounds(680, 10, 90, 50);
 
         jTabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -174,42 +187,111 @@ public class ViewApartamento extends javax.swing.JFrame implements Viewable {
         });
         jScrollPane1.setViewportView(jTabela);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 420, 760, 120);
-
+        jBAlterar.setBackground(new java.awt.Color(82, 82, 82));
+        jBAlterar.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
+        jBAlterar.setForeground(new java.awt.Color(232, 232, 232));
         jBAlterar.setText("Alterar");
+        jBAlterar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAlterarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBAlterar);
-        jBAlterar.setBounds(680, 110, 90, 50);
 
+        jLNumero.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
+        jLNumero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLNumero.setText("Numero");
-        getContentPane().add(jLNumero);
-        jLNumero.setBounds(170, 60, 60, 14);
-        getContentPane().add(jTNumero);
-        jTNumero.setBounds(160, 90, 100, 20);
 
-        jBSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/exit.png"))); // NOI18N
-        jBSair.setText("Sair");
-        jBSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBSairActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jBSair);
-        jBSair.setBounds(680, 340, 90, 60);
+        jTNumero.setBackground(new java.awt.Color(207, 207, 207));
+        jTNumero.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+        jTNumero.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTNumero.setBorder(null);
 
+        jBDeletar.setBackground(new java.awt.Color(140, 42, 42));
+        jBDeletar.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
+        jBDeletar.setForeground(new java.awt.Color(232, 232, 232));
         jBDeletar.setText("Deletar");
+        jBDeletar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBDeletarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBDeletar);
-        jBDeletar.setBounds(680, 220, 90, 50);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBInserir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(98, 98, 98)
+                        .addComponent(jBAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(95, 95, 95)
+                        .addComponent(jBDeletar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(12, 12, 12))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTId)
+                                    .addComponent(jLId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLBloco, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
+                                .addGap(45, 45, 45)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jTNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLQuantidadeQuartos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jTQuantidadeQuartos, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(jLNumero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(46, 46, 46))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTBloco)
+                                .addGap(382, 382, 382)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTAndar)
+                            .addComponent(jTMetragem)
+                            .addComponent(jLMetragem, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                            .addComponent(jLAndar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLId)
+                    .addComponent(jLNumero)
+                    .addComponent(jLAndar))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTId, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTAndar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLBloco)
+                    .addComponent(jLQuantidadeQuartos)
+                    .addComponent(jLMetragem))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTQuantidadeQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTMetragem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(131, 131, 131)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -232,19 +314,14 @@ public class ViewApartamento extends javax.swing.JFrame implements Viewable {
 
     private void jTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaMouseClicked
         this._HANDLER_JANELA.atulizarListaDeInputRelacionadoTabela(new javax.swing.JTextField[]{
-            jTCodigo,
+            jTId,
             jTNumero,
             jTAndar,
             jTBloco,
             jTQuantidadeQuartos,
-            jTMetragem,
-            jTNumero
+            jTMetragem
         }, jTabela); 
     }//GEN-LAST:event_jTabelaMouseClicked
-
-    private void jBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairActionPerformed
-       dispose();
-    }//GEN-LAST:event_jBSairActionPerformed
 
     private void jBDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeletarActionPerformed
        atualizaValoresModelo(true);
@@ -286,18 +363,17 @@ public class ViewApartamento extends javax.swing.JFrame implements Viewable {
     private javax.swing.JButton jBAlterar;
     private javax.swing.JButton jBDeletar;
     private javax.swing.JButton jBInserir;
-    private javax.swing.JButton jBSair;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLAndar;
     private javax.swing.JLabel jLBloco;
-    private javax.swing.JLabel jLCodigo;
+    private javax.swing.JLabel jLId;
     private javax.swing.JLabel jLMetragem;
     private javax.swing.JLabel jLNumero;
     private javax.swing.JLabel jLQuantidadeQuartos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTAndar;
     private javax.swing.JTextField jTBloco;
-    private javax.swing.JTextField jTCodigo;
+    private javax.swing.JTextField jTId;
     private javax.swing.JTextField jTMetragem;
     private javax.swing.JTextField jTNumero;
     private javax.swing.JTextField jTQuantidadeQuartos;
