@@ -5,16 +5,6 @@ package common.handlers;
  * @author Erick Frederick Caldeira
  */
 public class HandlerInput {
-    public String higienizarData(String data){
-        String dataHigienizada = data;
-        
-        if(this.textoNaoESoEspaco(data)){
-           dataHigienizada = data.replaceAll("[//]", "-").replace(" ", "");
-        }
-
-        return dataHigienizada;
-    }
-
     public String higienizarCpf(String cpf){
         String cpfHigienizado =  cpf;
         
