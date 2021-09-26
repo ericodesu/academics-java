@@ -9,7 +9,12 @@ import condominio.models.ModelProprietario;
 import condominio.daos.DAOProprietarios;
 
 public class ViewProprietario extends javax.swing.JFrame implements Viewable {
-    public ViewProprietario(ModelProprietario injectedModel, DAOProprietarios injectedDao) {
+    public ViewProprietario(
+        HandlerJanela injectedHandlerJanela,
+        ModelProprietario injectedModel,
+        DAOProprietarios injectedDao
+    ) {
+        this._HANDLER_JANELA = injectedHandlerJanela;
         this._MODELO = injectedModel;
         this._DAO = injectedDao;
 
@@ -84,7 +89,7 @@ public class ViewProprietario extends javax.swing.JFrame implements Viewable {
         this._MODELO.setBloco(bloco);
     }
 
-    private final HandlerJanela _HANDLER_JANELA = new HandlerJanela();
+    private final HandlerJanela _HANDLER_JANELA;
     private final ModelProprietario _MODELO;
     private final DAOProprietarios _DAO;
 

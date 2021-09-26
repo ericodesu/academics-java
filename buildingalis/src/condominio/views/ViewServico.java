@@ -12,7 +12,12 @@ import condominio.daos.DAOServicos;
  * @author Erick Frederick
  */
 public class ViewServico extends javax.swing.JFrame implements Viewable {
-    public ViewServico(ModelServico injectedModel, DAOServicos injectedDao) {
+    public ViewServico(
+        HandlerJanela injectedHandlerJanela,
+        ModelServico injectedModel,
+        DAOServicos injectedDao
+    ) {
+        this._HANDLER_JANELA = injectedHandlerJanela;
         this._MODELO = injectedModel;
         this._DAO = injectedDao;
 
@@ -71,7 +76,7 @@ public class ViewServico extends javax.swing.JFrame implements Viewable {
         this._MODELO.setLocalizacao(localizacao);
     }
 
-    private final HandlerJanela _HANDLER_JANELA = new HandlerJanela();
+    private final HandlerJanela _HANDLER_JANELA;
     private final ModelServico _MODELO;
     private final DAOServicos _DAO;
 

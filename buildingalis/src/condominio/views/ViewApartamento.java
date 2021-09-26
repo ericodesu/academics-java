@@ -8,7 +8,12 @@ import condominio.models.ModelApartamento;
 import condominio.daos.DAOApartamentos;
 
 public class ViewApartamento extends javax.swing.JFrame implements Viewable {
-    public ViewApartamento(ModelApartamento injectedModel, DAOApartamentos injectedDao) {
+    public ViewApartamento(
+        HandlerJanela injectedHandlerJanela,
+        ModelApartamento injectedModel,
+        DAOApartamentos injectedDao
+    ) {
+        this._HANDLER_JANELA = injectedHandlerJanela;
         this._MODELO = injectedModel;
         this._DAO = injectedDao;
 
@@ -75,7 +80,7 @@ public class ViewApartamento extends javax.swing.JFrame implements Viewable {
         this._MODELO.setMetragem(metragem);
     }
 
-    private final HandlerJanela _HANDLER_JANELA = new HandlerJanela();
+    private final HandlerJanela _HANDLER_JANELA;
     private final ModelApartamento _MODELO;
     private final DAOApartamentos _DAO;
 

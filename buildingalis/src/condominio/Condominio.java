@@ -2,6 +2,7 @@ package condominio;
 
 import condominio.views.ViewHome;
 import common.handlers.HandlerJanela;
+import common.handlers.HandlerRelatorio;
 import common.handlers.HandlerMigration;
 
 public class Condominio {
@@ -9,9 +10,9 @@ public class Condominio {
         HandlerMigration handlerMigration = new HandlerMigration();
         handlerMigration.configurarAmbiente();
 
-        ViewHome homeView = new ViewHome();
-
         HandlerJanela handlerJanela = new HandlerJanela();
+
+        ViewHome homeView = new ViewHome(handlerJanela, new HandlerRelatorio());
 
         handlerJanela.configurarJanela(homeView);
         handlerJanela.rederizarJanela(homeView);

@@ -12,7 +12,11 @@ import condominio.daos.DAOAreasLazer;
  * @author Erick Frederick
  */
 public class ViewAreaLazer extends javax.swing.JFrame implements Viewable {
-    public ViewAreaLazer(ModelAreaLazer injectedModel, DAOAreasLazer injectedDao) {
+    public ViewAreaLazer(
+        HandlerJanela injectedHandlerJanela,
+        ModelAreaLazer injectedModel,
+        DAOAreasLazer injectedDao
+    ) {
         this._MODELO = injectedModel;
         this._DAO = injectedDao;
 

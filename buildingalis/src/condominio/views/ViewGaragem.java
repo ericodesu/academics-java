@@ -12,7 +12,12 @@ import condominio.daos.DAOGaragens;
  * @author Erick Frederick
  */
 public class ViewGaragem extends javax.swing.JFrame implements Viewable {
-    public ViewGaragem(ModelGaragem injectedModel, DAOGaragens injectedDao) {
+    public ViewGaragem(
+        HandlerJanela injectedHandlerJanela,
+        ModelGaragem injectedModel,
+        DAOGaragens injectedDao
+    ) {
+        this._HANDLER_JANELA = injectedHandlerJanela;
         this._MODELO = injectedModel;
         this._DAO = injectedDao;
 
@@ -67,7 +72,7 @@ public class ViewGaragem extends javax.swing.JFrame implements Viewable {
         this._MODELO.setTorre(torre);
     }
 
-    private final HandlerJanela _HANDLER_JANELA = new HandlerJanela();
+    private final HandlerJanela _HANDLER_JANELA;
     private final ModelGaragem _MODELO;
     private final DAOGaragens _DAO;
 

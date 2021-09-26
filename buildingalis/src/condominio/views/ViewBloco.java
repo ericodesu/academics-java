@@ -12,7 +12,12 @@ import condominio.daos.DAOBlocos;
  * @author Erick Frederick
  */
 public class ViewBloco extends javax.swing.JFrame implements Viewable {
-    public ViewBloco(ModelBloco injectedModel, DAOBlocos injectedDao) {
+    public ViewBloco(
+        HandlerJanela injectedHandlerJanela,
+        ModelBloco injectedModel,
+        DAOBlocos injectedDao
+    ) {
+        this._HANDLER_JANELA = injectedHandlerJanela;
         this._MODELO = injectedModel;
         this._DAO = injectedDao;
 
@@ -21,7 +26,7 @@ public class ViewBloco extends javax.swing.JFrame implements Viewable {
     }
 
     @Override
-    public void hidrataTabela() {
+    public final void hidrataTabela() {
         DefaultTableModel tabela = (DefaultTableModel) jTabela.getModel();
 
         tabela.setNumRows(0);
@@ -71,7 +76,7 @@ public class ViewBloco extends javax.swing.JFrame implements Viewable {
         this._MODELO.setQuantidadeApartamentoAndares(quantidadeApartamentoAndares);
     }
 
-    private final HandlerJanela _HANDLER_JANELA = new HandlerJanela();
+    private final HandlerJanela _HANDLER_JANELA;
     private final ModelBloco _MODELO;
     private final DAOBlocos _DAO;
 

@@ -1,13 +1,10 @@
 package condominio.views;
 
-import java.io.File;
-import java.sql.Connection;
-import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
 
 import common.handlers.HandlerJanela;
-import common.handlers.HandlerConexao;
+import common.handlers.HandlerRelatorio;
+import common.enums.EnumRelatorios;
 import condominio.models.*;
 import condominio.daos.*;
 
@@ -16,24 +13,18 @@ import condominio.daos.*;
  * @author Marcelo
  */
 public class ViewHome extends javax.swing.JFrame {
-    public ViewHome() {
+    public ViewHome(
+        HandlerJanela injectedHandlerJanela,
+        HandlerRelatorio injtectedHandlerRelatorio
+    ) {
+        this._HANDLER_JANELA = injectedHandlerJanela;
+        this._HANDLER_RELATORIO = injtectedHandlerRelatorio;
+
         initComponents();
     }
 
-    private JasperPrint gerarRelatorioJasper(String nomeRelatorio){
-        try {
-            String caminhoRelativoPastaRelatorio = "src/relatorios/";
-
-            Connection con = new HandlerConexao().getConnection();
-            File arquivoJasper = new File(caminhoRelativoPastaRelatorio + nomeRelatorio + ".jasper");
-
-            return JasperFillManager.fillReport(arquivoJasper.getAbsolutePath(), null, con);
-        } catch (Exception e) { }
-
-        return null;
-    }
-
-    private final HandlerJanela _handlerJanela = new HandlerJanela();
+    private final HandlerJanela _HANDLER_JANELA;
+    private final HandlerRelatorio _HANDLER_RELATORIO;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,6 +35,7 @@ public class ViewHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMSAgenda = new javax.swing.JMenuItem();
@@ -70,12 +62,33 @@ public class ViewHome extends javax.swing.JFrame {
         jMSSeparator11 = new javax.swing.JPopupMenu.Separator();
         jMSTorres = new javax.swing.JMenuItem();
         jMRApartamento = new javax.swing.JMenu();
+        jMRAgendas = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMRApartamentos = new javax.swing.JMenuItem();
-        jMRSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jMRAreasLazer = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        jMRBlocos = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        jMRCorreios = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
+        jMRFuncionarios = new javax.swing.JMenuItem();
+        jSeparator6 = new javax.swing.JPopupMenu.Separator();
+        jMRGaragens = new javax.swing.JMenuItem();
+        jSeparator7 = new javax.swing.JPopupMenu.Separator();
+        jMRMoradores = new javax.swing.JMenuItem();
+        jSeparator8 = new javax.swing.JPopupMenu.Separator();
         jMRProprietarios = new javax.swing.JMenuItem();
-        jMRSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jSeparator9 = new javax.swing.JPopupMenu.Separator();
+        jMRServicos = new javax.swing.JMenuItem();
+        jSeparator10 = new javax.swing.JPopupMenu.Separator();
+        jMRVeiculos = new javax.swing.JMenuItem();
+        jSeparator11 = new javax.swing.JPopupMenu.Separator();
+        jMRTorres = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -205,23 +218,112 @@ public class ViewHome extends javax.swing.JFrame {
 
         jMRApartamento.setText("Relatorios");
 
+        jMRAgendas.setText("Agendas");
+        jMRAgendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMRAgendasActionPerformed(evt);
+            }
+        });
+        jMRApartamento.add(jMRAgendas);
+        jMRApartamento.add(jSeparator1);
+
         jMRApartamentos.setText("Apartamentos");
         jMRApartamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuRApartamentoActionPerformed(evt);
+                jMRApartamentosActionPerformed(evt);
             }
         });
         jMRApartamento.add(jMRApartamentos);
-        jMRApartamento.add(jMRSeparator1);
+        jMRApartamento.add(jSeparator2);
+
+        jMRAreasLazer.setText("Areas de Lazer");
+        jMRAreasLazer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMRAreasLazerActionPerformed(evt);
+            }
+        });
+        jMRApartamento.add(jMRAreasLazer);
+        jMRApartamento.add(jSeparator3);
+
+        jMRBlocos.setText("Blocos");
+        jMRBlocos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMRBlocosActionPerformed(evt);
+            }
+        });
+        jMRApartamento.add(jMRBlocos);
+        jMRApartamento.add(jSeparator4);
+
+        jMRCorreios.setText("Correios");
+        jMRCorreios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMRCorreiosActionPerformed(evt);
+            }
+        });
+        jMRApartamento.add(jMRCorreios);
+        jMRApartamento.add(jSeparator5);
+
+        jMRFuncionarios.setText("Funcionários");
+        jMRFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMRFuncionariosActionPerformed(evt);
+            }
+        });
+        jMRApartamento.add(jMRFuncionarios);
+        jMRApartamento.add(jSeparator6);
+
+        jMRGaragens.setText("Garagens");
+        jMRGaragens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMRGaragensActionPerformed(evt);
+            }
+        });
+        jMRApartamento.add(jMRGaragens);
+        jMRApartamento.add(jSeparator7);
+
+        jMRMoradores.setText("Moradores");
+        jMRMoradores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMRMoradoresActionPerformed(evt);
+            }
+        });
+        jMRApartamento.add(jMRMoradores);
+        jMRApartamento.add(jSeparator8);
 
         jMRProprietarios.setText("Proprietarios");
         jMRProprietarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuRProprietariosActionPerformed(evt);
+                jMRProprietariosActionPerformed(evt);
             }
         });
         jMRApartamento.add(jMRProprietarios);
-        jMRApartamento.add(jMRSeparator2);
+        jMRApartamento.add(jSeparator9);
+
+        jMRServicos.setText("Serviços");
+        jMRServicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMRServicosActionPerformed(evt);
+            }
+        });
+        jMRApartamento.add(jMRServicos);
+        jMRApartamento.add(jSeparator10);
+
+        jMRVeiculos.setText("Veículos");
+        jMRVeiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMRVeiculosActionPerformed(evt);
+            }
+        });
+        jMRApartamento.add(jMRVeiculos);
+        jMRApartamento.add(jSeparator11);
+
+        jMRTorres.setText("Torres");
+        jMRTorres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMRTorresActionPerformed(evt);
+            }
+        });
+        jMRApartamento.add(jMRTorres);
 
         jMenuBar1.add(jMRApartamento);
 
@@ -249,107 +351,209 @@ public class ViewHome extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuRApartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRApartamentoActionPerformed
-        try {
-            JasperPrint relatorioApartamento = this.gerarRelatorioJasper("apartamento");
-
-            JasperViewer.viewReport(relatorioApartamento, false);
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_jMenuRApartamentoActionPerformed
-
     private void jMenuSApartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSApartamentosActionPerformed
-        ViewApartamento viewApartamento = new ViewApartamento(new ModelApartamento(), new DAOApartamentos());
+        ViewApartamento viewApartamento = new ViewApartamento(
+            this._HANDLER_JANELA,
+            new ModelApartamento(),
+            new DAOApartamentos()
+        );
 
-        this._handlerJanela.configurarJanela(viewApartamento);
-        this._handlerJanela.rederizarJanela(viewApartamento);
+        this._HANDLER_JANELA.configurarJanela(viewApartamento);
+        this._HANDLER_JANELA.rederizarJanela(viewApartamento);
     }//GEN-LAST:event_jMenuSApartamentosActionPerformed
 
     private void jMSProrietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSProrietariosActionPerformed
-        ViewProprietario viewProprietario = new ViewProprietario(new ModelProprietario(), new DAOProprietarios());
+        ViewProprietario viewProprietario = new ViewProprietario(
+            this._HANDLER_JANELA,
+            new ModelProprietario(),
+            new DAOProprietarios()
+        );
 
-        this._handlerJanela.configurarJanela(viewProprietario);
-        this._handlerJanela.rederizarJanela(viewProprietario);
+        this._HANDLER_JANELA.configurarJanela(viewProprietario);
+        this._HANDLER_JANELA.rederizarJanela(viewProprietario);
     }//GEN-LAST:event_jMSProrietariosActionPerformed
 
-    private void jMenuRProprietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRProprietariosActionPerformed
-        try {
-            JasperPrint relatorioProprietario = this.gerarRelatorioJasper("propietario");
-
-            JasperViewer.viewReport(relatorioProprietario, false);
-        } catch (Exception e) {
-        }       
-    }//GEN-LAST:event_jMenuRProprietariosActionPerformed
-
     private void jMSBlocosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSBlocosActionPerformed
-        ViewBloco viewBloco = new ViewBloco(new ModelBloco(), new DAOBlocos());
+        ViewBloco viewBloco = new ViewBloco(
+            this._HANDLER_JANELA,
+            new ModelBloco(),
+            new DAOBlocos()
+        );
 
-        this._handlerJanela.configurarJanela(viewBloco);
-        this._handlerJanela.rederizarJanela(viewBloco);
+        this._HANDLER_JANELA.configurarJanela(viewBloco);
+        this._HANDLER_JANELA.rederizarJanela(viewBloco);
     }//GEN-LAST:event_jMSBlocosActionPerformed
 
     private void jMSCarrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSCarrosActionPerformed
-        ViewCarro viewCarro = new ViewCarro(new ModelCarro(), new DAOCarros());
+        ViewCarro viewCarro = new ViewCarro(
+            this._HANDLER_JANELA,
+            new ModelCarro(),
+            new DAOCarros()
+        );
 
-        this._handlerJanela.configurarJanela(viewCarro);
-        this._handlerJanela.rederizarJanela(viewCarro);
+        this._HANDLER_JANELA.configurarJanela(viewCarro);
+        this._HANDLER_JANELA.rederizarJanela(viewCarro);
     }//GEN-LAST:event_jMSCarrosActionPerformed
 
     private void jMSGaragensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSGaragensActionPerformed
-        ViewGaragem viewGaragem = new ViewGaragem(new ModelGaragem(), new DAOGaragens());
+        ViewGaragem viewGaragem = new ViewGaragem(
+            this._HANDLER_JANELA,
+            new ModelGaragem(),
+            new DAOGaragens()
+        );
 
-        this._handlerJanela.configurarJanela(viewGaragem);
-        this._handlerJanela.rederizarJanela(viewGaragem);
+        this._HANDLER_JANELA.configurarJanela(viewGaragem);
+        this._HANDLER_JANELA.rederizarJanela(viewGaragem);
     }//GEN-LAST:event_jMSGaragensActionPerformed
 
     private void jMSAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSAgendaActionPerformed
-        ViewAgenda viewAgenda = new ViewAgenda(new ModelAgenda(), new DAOAgendas());
+        ViewAgenda viewAgenda = new ViewAgenda(
+            this._HANDLER_JANELA,
+            new ModelAgenda(),
+            new DAOAgendas()
+        );
 
-        this._handlerJanela.configurarJanela(viewAgenda);
-        this._handlerJanela.rederizarJanela(viewAgenda);
+        this._HANDLER_JANELA.configurarJanela(viewAgenda);
+        this._HANDLER_JANELA.rederizarJanela(viewAgenda);
     }//GEN-LAST:event_jMSAgendaActionPerformed
 
     private void jMSAreasLazerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSAreasLazerActionPerformed
-        ViewAreaLazer viewAreaLazer = new ViewAreaLazer(new ModelAreaLazer(), new DAOAreasLazer());
+        ViewAreaLazer viewAreaLazer = new ViewAreaLazer(
+            this._HANDLER_JANELA,
+            new ModelAreaLazer(),
+            new DAOAreasLazer()
+        );
 
-        this._handlerJanela.configurarJanela(viewAreaLazer);
-        this._handlerJanela.rederizarJanela(viewAreaLazer);
+        this._HANDLER_JANELA.configurarJanela(viewAreaLazer);
+        this._HANDLER_JANELA.rederizarJanela(viewAreaLazer);
     }//GEN-LAST:event_jMSAreasLazerActionPerformed
 
     private void jMSCorreiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSCorreiosActionPerformed
-        ViewCorreio viewCorreio = new ViewCorreio(new ModelCorreio(), new DAOCorreios());
+        ViewCorreio viewCorreio = new ViewCorreio(
+            this._HANDLER_JANELA,
+            new ModelCorreio(),
+            new DAOCorreios()
+        );
 
-        this._handlerJanela.configurarJanela(viewCorreio);
-        this._handlerJanela.rederizarJanela(viewCorreio);
+        this._HANDLER_JANELA.configurarJanela(viewCorreio);
+        this._HANDLER_JANELA.rederizarJanela(viewCorreio);
     }//GEN-LAST:event_jMSCorreiosActionPerformed
 
     private void jMSFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSFuncionariosActionPerformed
-        ViewFuncionario viewFuncionario = new ViewFuncionario(new ModelFuncionario(), new DAOFuncionarios());
+        ViewFuncionario viewFuncionario = new ViewFuncionario(
+            this._HANDLER_JANELA,
+            new ModelFuncionario(),
+            new DAOFuncionarios()
+        );
 
-        this._handlerJanela.configurarJanela(viewFuncionario);
-        this._handlerJanela.rederizarJanela(viewFuncionario);
+        this._HANDLER_JANELA.configurarJanela(viewFuncionario);
+        this._HANDLER_JANELA.rederizarJanela(viewFuncionario);
     }//GEN-LAST:event_jMSFuncionariosActionPerformed
 
     private void jMSMoradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSMoradoresActionPerformed
-        ViewMorador viewMorador = new ViewMorador(new ModelMorador(), new DAOMoradores());
+        ViewMorador viewMorador = new ViewMorador(
+            this._HANDLER_JANELA,
+            new ModelMorador(),
+            new DAOMoradores()
+        );
 
-        this._handlerJanela.configurarJanela(viewMorador);
-        this._handlerJanela.rederizarJanela(viewMorador);
+        this._HANDLER_JANELA.configurarJanela(viewMorador);
+        this._HANDLER_JANELA.rederizarJanela(viewMorador);
     }//GEN-LAST:event_jMSMoradoresActionPerformed
 
     private void jMSServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSServicosActionPerformed
-        ViewServico viewServico = new ViewServico(new ModelServico(), new DAOServicos());
+        ViewServico viewServico = new ViewServico(
+            this._HANDLER_JANELA,
+            new ModelServico(),
+            new DAOServicos()
+        );
 
-        this._handlerJanela.configurarJanela(viewServico);
-        this._handlerJanela.rederizarJanela(viewServico);
+        this._HANDLER_JANELA.configurarJanela(viewServico);
+        this._HANDLER_JANELA.rederizarJanela(viewServico);
     }//GEN-LAST:event_jMSServicosActionPerformed
 
     private void jMSTorresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSTorresActionPerformed
-        ViewTorre viewTorre = new ViewTorre(new ModelTorre(), new DAOTorres());
+        ViewTorre viewTorre = new ViewTorre(
+            this._HANDLER_JANELA,
+            new ModelTorre(),
+            new DAOTorres()
+        );
 
-        this._handlerJanela.configurarJanela(viewTorre);
-        this._handlerJanela.rederizarJanela(viewTorre);
+        this._HANDLER_JANELA.configurarJanela(viewTorre);
+        this._HANDLER_JANELA.rederizarJanela(viewTorre);
     }//GEN-LAST:event_jMSTorresActionPerformed
+
+    private void jMRAgendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMRAgendasActionPerformed
+        JasperPrint relatorioAgenda = this._HANDLER_RELATORIO.gerarRelatorioJasper(EnumRelatorios.RELATORIO_AGENDA.getNomeTipoCampo());
+
+        this._HANDLER_RELATORIO.renderizarRelatorio(relatorioAgenda);
+    }//GEN-LAST:event_jMRAgendasActionPerformed
+
+    private void jMRApartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMRApartamentosActionPerformed
+        JasperPrint relatorioApartamento = this._HANDLER_RELATORIO.gerarRelatorioJasper(EnumRelatorios.RELATORIO_APARTAMENTO.getNomeTipoCampo());
+
+        this._HANDLER_RELATORIO.renderizarRelatorio(relatorioApartamento);
+    }//GEN-LAST:event_jMRApartamentosActionPerformed
+
+    private void jMRAreasLazerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMRAreasLazerActionPerformed
+        JasperPrint relatorioAreaLazer = this._HANDLER_RELATORIO.gerarRelatorioJasper(EnumRelatorios.RELATORIO_AREA_LAZER.getNomeTipoCampo());
+
+        this._HANDLER_RELATORIO.renderizarRelatorio(relatorioAreaLazer);
+    }//GEN-LAST:event_jMRAreasLazerActionPerformed
+
+    private void jMRBlocosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMRBlocosActionPerformed
+        JasperPrint relatorioBloco = this._HANDLER_RELATORIO.gerarRelatorioJasper(EnumRelatorios.RELATORIO_BLOCO.getNomeTipoCampo());
+
+        this._HANDLER_RELATORIO.renderizarRelatorio(relatorioBloco);
+    }//GEN-LAST:event_jMRBlocosActionPerformed
+
+    private void jMRCorreiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMRCorreiosActionPerformed
+        JasperPrint relatorioCorreio = this._HANDLER_RELATORIO.gerarRelatorioJasper(EnumRelatorios.RELATORIO_CORREIO.getNomeTipoCampo());
+
+        this._HANDLER_RELATORIO.renderizarRelatorio(relatorioCorreio);
+    }//GEN-LAST:event_jMRCorreiosActionPerformed
+
+    private void jMRFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMRFuncionariosActionPerformed
+        JasperPrint relatorioFuncionario = this._HANDLER_RELATORIO.gerarRelatorioJasper(EnumRelatorios.RELATORIO_FUNCIONARIO.getNomeTipoCampo());
+
+        this._HANDLER_RELATORIO.renderizarRelatorio(relatorioFuncionario);
+    }//GEN-LAST:event_jMRFuncionariosActionPerformed
+
+    private void jMRGaragensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMRGaragensActionPerformed
+        JasperPrint relatorioGaragem = this._HANDLER_RELATORIO.gerarRelatorioJasper(EnumRelatorios.RELATORIO_GARAGEM.getNomeTipoCampo());
+
+        this._HANDLER_RELATORIO.renderizarRelatorio(relatorioGaragem);
+    }//GEN-LAST:event_jMRGaragensActionPerformed
+
+    private void jMRMoradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMRMoradoresActionPerformed
+        JasperPrint relatorioMorador = this._HANDLER_RELATORIO.gerarRelatorioJasper(EnumRelatorios.RELATORIO_MORADOR.getNomeTipoCampo());
+
+        this._HANDLER_RELATORIO.renderizarRelatorio(relatorioMorador);
+    }//GEN-LAST:event_jMRMoradoresActionPerformed
+
+    private void jMRProprietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMRProprietariosActionPerformed
+        JasperPrint relatorioRelatorio = this._HANDLER_RELATORIO.gerarRelatorioJasper(EnumRelatorios.RELATORIO_PROPRIETARIO.getNomeTipoCampo());
+
+        this._HANDLER_RELATORIO.renderizarRelatorio(relatorioRelatorio);
+    }//GEN-LAST:event_jMRProprietariosActionPerformed
+
+    private void jMRServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMRServicosActionPerformed
+        JasperPrint relatorioServico = this._HANDLER_RELATORIO.gerarRelatorioJasper(EnumRelatorios.RELATORIO_SERVICO.getNomeTipoCampo());
+
+        this._HANDLER_RELATORIO.renderizarRelatorio(relatorioServico);
+    }//GEN-LAST:event_jMRServicosActionPerformed
+
+    private void jMRVeiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMRVeiculosActionPerformed
+        JasperPrint relatorioVeiculo = this._HANDLER_RELATORIO.gerarRelatorioJasper(EnumRelatorios.RELATORIO_VEICULO.getNomeTipoCampo());
+
+        this._HANDLER_RELATORIO.renderizarRelatorio(relatorioVeiculo);
+    }//GEN-LAST:event_jMRVeiculosActionPerformed
+
+    private void jMRTorresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMRTorresActionPerformed
+        JasperPrint relatorioTorre = this._HANDLER_RELATORIO.gerarRelatorioJasper(EnumRelatorios.RELATORIO_TORRE.getNomeTipoCampo());
+
+        this._HANDLER_RELATORIO.renderizarRelatorio(relatorioTorre);
+    }//GEN-LAST:event_jMRTorresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -380,11 +584,19 @@ public class ViewHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jMRAgendas;
     private javax.swing.JMenu jMRApartamento;
     private javax.swing.JMenuItem jMRApartamentos;
+    private javax.swing.JMenuItem jMRAreasLazer;
+    private javax.swing.JMenuItem jMRBlocos;
+    private javax.swing.JMenuItem jMRCorreios;
+    private javax.swing.JMenuItem jMRFuncionarios;
+    private javax.swing.JMenuItem jMRGaragens;
+    private javax.swing.JMenuItem jMRMoradores;
     private javax.swing.JMenuItem jMRProprietarios;
-    private javax.swing.JPopupMenu.Separator jMRSeparator1;
-    private javax.swing.JPopupMenu.Separator jMRSeparator2;
+    private javax.swing.JMenuItem jMRServicos;
+    private javax.swing.JMenuItem jMRTorres;
+    private javax.swing.JMenuItem jMRVeiculos;
     private javax.swing.JMenuItem jMSAgenda;
     private javax.swing.JMenuItem jMSApartamentos;
     private javax.swing.JMenuItem jMSAreasLazer;
@@ -411,6 +623,18 @@ public class ViewHome extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator10;
+    private javax.swing.JPopupMenu.Separator jSeparator11;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
+    private javax.swing.JPopupMenu.Separator jSeparator6;
+    private javax.swing.JPopupMenu.Separator jSeparator7;
+    private javax.swing.JPopupMenu.Separator jSeparator8;
+    private javax.swing.JPopupMenu.Separator jSeparator9;
     // End of variables declaration//GEN-END:variables
 }

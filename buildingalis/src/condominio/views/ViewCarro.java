@@ -12,7 +12,12 @@ import condominio.daos.DAOCarros;
  * @author Erick Frederick
  */
 public class ViewCarro extends javax.swing.JFrame implements Viewable {
-    public ViewCarro(ModelCarro injectedModel, DAOCarros injectedDao) {
+    public ViewCarro(
+        HandlerJanela injectedHandlerJanela,
+        ModelCarro injectedModel,
+        DAOCarros injectedDao
+    ) {
+        this._HANDLER_JANELA = injectedHandlerJanela;
         this._MODELO = injectedModel;
         this._DAO = injectedDao;
 
@@ -79,7 +84,7 @@ public class ViewCarro extends javax.swing.JFrame implements Viewable {
         this._MODELO.setIdApartamento(idApartamento);
     }
 
-    private final HandlerJanela _HANDLER_JANELA = new HandlerJanela();
+    private final HandlerJanela _HANDLER_JANELA;
     private final ModelCarro _MODELO;
     private final DAOCarros _DAO;
 

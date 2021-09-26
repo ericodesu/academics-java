@@ -12,7 +12,12 @@ import condominio.daos.DAOFuncionarios;
  * @author Erick Frederick
  */
 public class ViewFuncionario extends javax.swing.JFrame implements Viewable {
-    public ViewFuncionario(ModelFuncionario injectedModel, DAOFuncionarios injectedDao) {
+    public ViewFuncionario(
+        HandlerJanela injectedHandlerJanela,
+        ModelFuncionario injectedModel,
+        DAOFuncionarios injectedDao
+    ) {
+        this._HANDLER_JANELA = injectedHandlerJanela;
         this._MODELO = injectedModel;
         this._DAO = injectedDao;
 
@@ -84,7 +89,7 @@ public class ViewFuncionario extends javax.swing.JFrame implements Viewable {
         
     }
 
-    private final HandlerJanela _HANDLER_JANELA = new HandlerJanela();
+    private final HandlerJanela _HANDLER_JANELA;
     private final ModelFuncionario _MODELO;
     private final DAOFuncionarios _DAO;
 

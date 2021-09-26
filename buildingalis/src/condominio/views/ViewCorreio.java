@@ -12,7 +12,12 @@ import condominio.daos.DAOCorreios;
  * @author Erick Frederick
  */
 public class ViewCorreio extends javax.swing.JFrame implements Viewable {
-    public ViewCorreio(ModelCorreio injectedModel, DAOCorreios injectedDao) {
+    public ViewCorreio(
+        HandlerJanela injectedHandlerJanela,
+        ModelCorreio injectedModel,
+        DAOCorreios injectedDao
+    ) {
+        this._HANDLER_JANELA = injectedHandlerJanela;
         this._MODELO = injectedModel;
         this._DAO = injectedDao;
 
@@ -67,7 +72,7 @@ public class ViewCorreio extends javax.swing.JFrame implements Viewable {
         this._MODELO.setIdMorador(idMorador);
     }
 
-    private final HandlerJanela _HANDLER_JANELA = new HandlerJanela();
+    private final HandlerJanela _HANDLER_JANELA;
     private final ModelCorreio _MODELO;
     private final DAOCorreios _DAO;
 

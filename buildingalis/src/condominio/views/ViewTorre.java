@@ -12,7 +12,12 @@ import condominio.daos.DAOTorres;
  * @author Erick Frederick
  */
 public class ViewTorre extends javax.swing.JFrame implements Viewable {
-    public ViewTorre(ModelTorre injectedModel, DAOTorres injectedDao) {
+    public ViewTorre(
+        HandlerJanela injectedHandlerJanela,
+        ModelTorre injectedModel,
+        DAOTorres injectedDao
+    ) {
+        this._HANDLER_JANELA = injectedHandlerJanela;
         this._MODELO = injectedModel;
         this._DAO = injectedDao;
 
@@ -63,7 +68,7 @@ public class ViewTorre extends javax.swing.JFrame implements Viewable {
         this._MODELO.setNumero(idNumero);
     }
 
-    private final HandlerJanela _HANDLER_JANELA = new HandlerJanela();
+    private final HandlerJanela _HANDLER_JANELA;
     private final ModelTorre _MODELO;
     private final DAOTorres _DAO;
 

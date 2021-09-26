@@ -13,7 +13,12 @@ import condominio.daos.DAOAgendas;
  * @author Erick Frederick
  */
 public class ViewAgenda extends javax.swing.JFrame implements Viewable {
-    public ViewAgenda(ModelAgenda injectedModel, DAOAgendas injectedDao) {
+    public ViewAgenda(
+        HandlerJanela injectedHandlerJanela,
+        ModelAgenda injectedModel,
+        DAOAgendas injectedDao
+    ) {
+        this._HANDLER_JANELA = injectedHandlerJanela;
         this._MODELO = injectedModel;
         this._DAO = injectedDao;
 
@@ -68,7 +73,7 @@ public class ViewAgenda extends javax.swing.JFrame implements Viewable {
         this._MODELO.setIdMorador(idMorador);
     }
  
-    private final HandlerJanela _HANDLER_JANELA = new HandlerJanela();
+    private final HandlerJanela _HANDLER_JANELA;
     private final ModelAgenda _MODELO;
     private final DAOAgendas _DAO;
 
