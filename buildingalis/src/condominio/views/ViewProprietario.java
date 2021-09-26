@@ -3,14 +3,15 @@ package condominio.views;
 import java.sql.Date;
 import javax.swing.table.DefaultTableModel;
 
+import common.handlers.HandlerJanela;
 import common.interfaces.Viewable;
 import condominio.models.ModelProprietario;
 import condominio.daos.DAOProprietarios;
 
 public class ViewProprietario extends javax.swing.JFrame implements Viewable {
     public ViewProprietario(ModelProprietario injectedModel, DAOProprietarios injectedDao) {
-        this._modelo = injectedModel;
-        this._dao = injectedDao;
+        this._MODELO = injectedModel;
+        this._DAO = injectedDao;
 
         initComponents();
         hidrataTabela();
@@ -22,7 +23,7 @@ public class ViewProprietario extends javax.swing.JFrame implements Viewable {
 
         tabela.setNumRows(0);
 
-        this._dao.Listar().forEach((registro) -> {
+        this._DAO.Listar().forEach((registro) -> {
             tabela.addRow(new Object[] {
                 registro.getIdProprietario(),
                 registro.getNome(),
@@ -38,14 +39,18 @@ public class ViewProprietario extends javax.swing.JFrame implements Viewable {
 
     @Override
     public void limpaCamposDeEntrada() {
-        jTcodigo.setText("");
-        jTNome.setText("");
-        jTCpf.setText("");
-        jTTelefone.setText("");
-        jTemail.setText("");
-        jTDataNascimento.setText("");
-        jTApartamento.setText("");
-        jTBloco.setText("");
+        this._HANDLER_JANELA.limparListaDeInput(new javax.swing.JTextField[]{
+            jTcodigo,
+            jTNome,
+            jTCpf,
+            jTTelefone,
+            jTemail,
+            jTDataNascimento,
+            jTApartamento,
+            jTBloco,
+            jTNome
+        });
+
         jTNome.requestFocus();
     }
 
@@ -60,7 +65,7 @@ public class ViewProprietario extends javax.swing.JFrame implements Viewable {
         if(atualizaOId) {
             int codigo = Integer.parseInt(jTcodigo.getText().trim());
             
-            this._modelo.setIdProprietario(codigo);
+            this._MODELO.setIdProprietario(codigo);
         }
 
         String nome = jTNome.getText().trim();
@@ -71,17 +76,18 @@ public class ViewProprietario extends javax.swing.JFrame implements Viewable {
         int apartamento = Integer.parseInt(jTApartamento.getText().trim());
         int bloco = Integer.parseInt(jTBloco.getText().trim());
 
-        this._modelo.setNome(nome);
-        this._modelo.setCpf(cpf);
-        this._modelo.setTelefone(telefone);
-        this._modelo.setEmail(email);
-        this._modelo.setData(data);
-        this._modelo.setApartamento(apartamento);
-        this._modelo.setBloco(bloco);
+        this._MODELO.setNome(nome);
+        this._MODELO.setCpf(cpf);
+        this._MODELO.setTelefone(telefone);
+        this._MODELO.setEmail(email);
+        this._MODELO.setData(data);
+        this._MODELO.setApartamento(apartamento);
+        this._MODELO.setBloco(bloco);
     }
 
-    private final ModelProprietario _modelo;
-    private final DAOProprietarios _dao;
+    private final HandlerJanela _HANDLER_JANELA = new HandlerJanela();
+    private final ModelProprietario _MODELO;
+    private final DAOProprietarios _DAO;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -189,6 +195,7 @@ public class ViewProprietario extends javax.swing.JFrame implements Viewable {
                 return canEdit [columnIndex];
             }
         });
+        jTabela.getTableHeader().setReorderingAllowed(false);
         jTabela.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTabelaMouseClicked(evt);
@@ -226,28 +233,29 @@ public class ViewProprietario extends javax.swing.JFrame implements Viewable {
     private void jBInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInserirActionPerformed
         atualizaValoresModelo(false);
 
-        this._dao.Inserir(this._modelo);
+        this._DAO.Inserir(this._MODELO);
 
         atualizaJanela();
     }//GEN-LAST:event_jBInserirActionPerformed
 
     private void jTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaMouseClicked
-        if(jTabela.getSelectedRow() != -1) {
-            jTcodigo.setText(jTabela.getValueAt(jTabela.getSelectedRow(),0).toString());
-            jTNome.setText(jTabela.getValueAt(jTabela.getSelectedRow(),1).toString());
-            jTCpf.setText(jTabela.getValueAt(jTabela.getSelectedRow(),2).toString());
-            jTTelefone.setText(jTabela.getValueAt(jTabela.getSelectedRow(),3).toString());
-            jTemail.setText(jTabela.getValueAt(jTabela.getSelectedRow(),4).toString());
-            jTDataNascimento.setText(jTabela.getValueAt(jTabela.getSelectedRow(),5).toString());
-            jTApartamento.setText(jTabela.getValueAt(jTabela.getSelectedRow(),6).toString());
-            jTBloco.setText(jTabela.getValueAt(jTabela.getSelectedRow(),7).toString());
-        }
+        this._HANDLER_JANELA.atulizarListaDeInputRelacionadoTabela(new javax.swing.JTextField[]{
+                jTcodigo,
+                jTNome,
+                jTCpf,
+                jTTelefone,
+                jTemail,
+                jTDataNascimento,
+                jTApartamento,
+                jTBloco,
+                jTNome
+            }, jTabela);
     }//GEN-LAST:event_jTabelaMouseClicked
 
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
         atualizaValoresModelo(true);
 
-        this._dao.Alterar(this._modelo);
+        this._DAO.Alterar(this._MODELO);
 
         atualizaJanela();
     }//GEN-LAST:event_jBAlterarActionPerformed

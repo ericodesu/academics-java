@@ -2,14 +2,15 @@ package condominio.views;
 
 import javax.swing.table.DefaultTableModel;
 
+import common.handlers.HandlerJanela;
 import common.interfaces.Viewable;
 import condominio.models.ModelApartamento;
 import condominio.daos.DAOApartamentos;
 
 public class ViewApartamento extends javax.swing.JFrame implements Viewable {
     public ViewApartamento(ModelApartamento injectedModel, DAOApartamentos injectedDao) {
-        this._modelo = injectedModel;
-        this._dao = injectedDao;
+        this._MODELO = injectedModel;
+        this._DAO = injectedDao;
 
         initComponents();   
         hidrataTabela();
@@ -21,7 +22,7 @@ public class ViewApartamento extends javax.swing.JFrame implements Viewable {
 
         tabela.setNumRows(0);
 
-        this._dao.Listar().forEach((registro) -> {
+        this._DAO.Listar().forEach((registro) -> {
             tabela.addRow(new Object[]{
                 registro.getIdApartamento(),
                 registro.getNumero(),
@@ -35,12 +36,16 @@ public class ViewApartamento extends javax.swing.JFrame implements Viewable {
 
     @Override
     public void limpaCamposDeEntrada() {
-        jTCodigo.setText("");
-        jTNumero.setText("");
-        jTAndar.setText("");
-        jTBloco.setText("");
-        jTQuantidadeQuartos.setText("");
-        jTMetragem.setText("");
+        this._HANDLER_JANELA.limparListaDeInput(new javax.swing.JTextField[]{
+            jTCodigo,
+            jTNumero,
+            jTAndar,
+            jTBloco,
+            jTQuantidadeQuartos,
+            jTMetragem,
+            jTNumero
+        });
+
         jTNumero.requestFocus();
     }
 
@@ -55,7 +60,7 @@ public class ViewApartamento extends javax.swing.JFrame implements Viewable {
         if(atualizaOId) {
             int idApartamento = Integer.parseInt(jTCodigo.getText().trim());
 
-            this._modelo.setIdApartamento(idApartamento);
+            this._MODELO.setIdApartamento(idApartamento);
         }
 
         int numero = Integer.parseInt(jTNumero.getText().trim());
@@ -64,15 +69,16 @@ public class ViewApartamento extends javax.swing.JFrame implements Viewable {
         int quantidadeQuartos = Integer.parseInt(jTQuantidadeQuartos.getText().trim());
         double metragem = Double.parseDouble(jTMetragem.getText().trim());
 
-        this._modelo.setNumero(numero);
-        this._modelo.setAndar(andar);
-        this._modelo.setBloco(bloco);
-        this._modelo.setQtdeQuartos(quantidadeQuartos);
-        this._modelo.setMetragem(metragem);
+        this._MODELO.setNumero(numero);
+        this._MODELO.setAndar(andar);
+        this._MODELO.setBloco(bloco);
+        this._MODELO.setQtdeQuartos(quantidadeQuartos);
+        this._MODELO.setMetragem(metragem);
     }
 
-    private final ModelApartamento _modelo;
-    private final DAOApartamentos _dao;
+    private final HandlerJanela _HANDLER_JANELA = new HandlerJanela();
+    private final ModelApartamento _MODELO;
+    private final DAOApartamentos _DAO;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -160,6 +166,7 @@ public class ViewApartamento extends javax.swing.JFrame implements Viewable {
                 return canEdit [columnIndex];
             }
         });
+        jTabela.getTableHeader().setReorderingAllowed(false);
         jTabela.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTabelaMouseClicked(evt);
@@ -210,7 +217,7 @@ public class ViewApartamento extends javax.swing.JFrame implements Viewable {
     private void jBInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInserirActionPerformed
        atualizaValoresModelo(false);
 
-       this._dao.Inserir(this._modelo);
+       this._DAO.Inserir(this._MODELO);
 
        atualizaJanela();
     }//GEN-LAST:event_jBInserirActionPerformed
@@ -218,20 +225,21 @@ public class ViewApartamento extends javax.swing.JFrame implements Viewable {
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
        atualizaValoresModelo(true);
 
-       this._dao.Alterar(this._modelo);
+       this._DAO.Alterar(this._MODELO);
 
        atualizaJanela();
     }//GEN-LAST:event_jBAlterarActionPerformed
 
     private void jTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaMouseClicked
-        if (jTabela.getSelectedRow() != -1) {
-            jTCodigo.setText(jTabela.getValueAt(jTabela.getSelectedRow(),0).toString());
-            jTNumero.setText(jTabela.getValueAt(jTabela.getSelectedRow(),1).toString());
-            jTAndar.setText(jTabela.getValueAt(jTabela.getSelectedRow(),2).toString());
-            jTBloco.setText(jTabela.getValueAt(jTabela.getSelectedRow(),3).toString());
-            jTQuantidadeQuartos.setText(jTabela.getValueAt(jTabela.getSelectedRow(),4).toString());
-            jTMetragem.setText(jTabela.getValueAt(jTabela.getSelectedRow(),5).toString());
-        } 
+        this._HANDLER_JANELA.atulizarListaDeInputRelacionadoTabela(new javax.swing.JTextField[]{
+            jTCodigo,
+            jTNumero,
+            jTAndar,
+            jTBloco,
+            jTQuantidadeQuartos,
+            jTMetragem,
+            jTNumero
+        }, jTabela); 
     }//GEN-LAST:event_jTabelaMouseClicked
 
     private void jBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairActionPerformed
@@ -241,7 +249,7 @@ public class ViewApartamento extends javax.swing.JFrame implements Viewable {
     private void jBDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeletarActionPerformed
        atualizaValoresModelo(true);
 
-       this._dao.Deletar(this._modelo);
+       this._DAO.Deletar(this._MODELO);
 
        atualizaJanela();
     }//GEN-LAST:event_jBDeletarActionPerformed

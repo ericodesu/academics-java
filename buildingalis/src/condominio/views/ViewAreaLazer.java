@@ -2,6 +2,7 @@ package condominio.views;
 
 import javax.swing.table.DefaultTableModel;
 
+import common.handlers.HandlerJanela;
 import common.interfaces.Viewable;
 import condominio.models.ModelAreaLazer;
 import condominio.daos.DAOAreasLazer;
@@ -12,8 +13,8 @@ import condominio.daos.DAOAreasLazer;
  */
 public class ViewAreaLazer extends javax.swing.JFrame implements Viewable {
     public ViewAreaLazer(ModelAreaLazer injectedModel, DAOAreasLazer injectedDao) {
-        this._modelo = injectedModel;
-        this._dao = injectedDao;
+        this._MODELO = injectedModel;
+        this._DAO = injectedDao;
 
         initComponents();
         hidrataTabela();
@@ -25,7 +26,7 @@ public class ViewAreaLazer extends javax.swing.JFrame implements Viewable {
 
         tabela.setNumRows(0);
 
-        this._dao.Listar().forEach((registro) -> {
+        this._DAO.Listar().forEach((registro) -> {
             tabela.addRow(new Object[]{
                 registro.getIdAreaLazer(),
                 registro.getDescricao()
@@ -35,8 +36,11 @@ public class ViewAreaLazer extends javax.swing.JFrame implements Viewable {
 
     @Override
     public void limpaCamposDeEntrada() {
-        jTId.setText("");
-        jTDescricao.setText("");
+        this._HANDLER_JANELA.limparListaDeInput(new javax.swing.JTextField[]{
+            jTId,
+            jTDescricao
+        });
+
         jTDescricao.requestFocus();
     }
 
@@ -51,16 +55,17 @@ public class ViewAreaLazer extends javax.swing.JFrame implements Viewable {
         if(atualizaOId) {
             int idAreaLazer = Integer.parseInt(jTId.getText().trim());
 
-            this._modelo.setIdAreaLazer(idAreaLazer);
+            this._MODELO.setIdAreaLazer(idAreaLazer);
         }
 
         String descricao = jTDescricao.getText().trim();
 
-        this._modelo.setDescricao(descricao);
+        this._MODELO.setDescricao(descricao);
     }
 
-    private final ModelAreaLazer _modelo;
-    private final DAOAreasLazer _dao;
+    private final HandlerJanela _HANDLER_JANELA = new HandlerJanela();
+    private final ModelAreaLazer _MODELO;
+    private final DAOAreasLazer _DAO;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -106,6 +111,7 @@ public class ViewAreaLazer extends javax.swing.JFrame implements Viewable {
                 return canEdit [columnIndex];
             }
         });
+        jTabela.getTableHeader().setReorderingAllowed(false);
         jTabela.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTabelaMouseClicked(evt);
@@ -223,7 +229,7 @@ public class ViewAreaLazer extends javax.swing.JFrame implements Viewable {
     private void jBInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInserirActionPerformed
         atualizaValoresModelo(false);
 
-        this._dao.Inserir(this._modelo);
+        this._DAO.Inserir(this._MODELO);
 
         atualizaJanela();
     }//GEN-LAST:event_jBInserirActionPerformed
@@ -231,7 +237,7 @@ public class ViewAreaLazer extends javax.swing.JFrame implements Viewable {
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
         atualizaValoresModelo(true);
 
-        this._dao.Alterar(this._modelo);
+        this._DAO.Alterar(this._MODELO);
 
         atualizaJanela();
     }//GEN-LAST:event_jBAlterarActionPerformed
@@ -239,19 +245,16 @@ public class ViewAreaLazer extends javax.swing.JFrame implements Viewable {
     private void jBDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeletarActionPerformed
         atualizaValoresModelo(true);
 
-        this._dao.Deletar(this._modelo);
+        this._DAO.Deletar(this._MODELO);
 
         atualizaJanela();
     }//GEN-LAST:event_jBDeletarActionPerformed
 
     private void jTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaMouseClicked
-        if (jTabela.getSelectedRow() != -1) {
-            String selectedIdAreaLazer = jTabela.getValueAt(jTabela.getSelectedRow(),0).toString();
-            String selectedDescricao = jTabela.getValueAt(jTabela.getSelectedRow(),1).toString().replace("-", "");
-
-            jTId.setText(selectedIdAreaLazer);
-            jTDescricao.setText(selectedDescricao);
-        }
+        this._HANDLER_JANELA.atulizarListaDeInputRelacionadoTabela(new javax.swing.JTextField[]{
+            jTId,
+            jTDescricao
+        }, jTabela);
     }//GEN-LAST:event_jTabelaMouseClicked
 
     /**

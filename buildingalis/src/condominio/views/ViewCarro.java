@@ -2,6 +2,7 @@ package condominio.views;
 
 import javax.swing.table.DefaultTableModel;
 
+import common.handlers.HandlerJanela;
 import common.interfaces.Viewable;
 import condominio.models.ModelCarro;
 import condominio.daos.DAOCarros;
@@ -12,8 +13,8 @@ import condominio.daos.DAOCarros;
  */
 public class ViewCarro extends javax.swing.JFrame implements Viewable {
     public ViewCarro(ModelCarro injectedModel, DAOCarros injectedDao) {
-        this._modelo = injectedModel;
-        this._dao = injectedDao;
+        this._MODELO = injectedModel;
+        this._DAO = injectedDao;
 
         initComponents();
         hidrataTabela();
@@ -25,7 +26,7 @@ public class ViewCarro extends javax.swing.JFrame implements Viewable {
 
         tabela.setNumRows(0);
 
-        this._dao.Listar().forEach((registro) -> {
+        this._DAO.Listar().forEach((registro) -> {
             tabela.addRow(new Object[]{
                 registro.getIdCarro(),
                 registro.getMarca(),
@@ -39,11 +40,15 @@ public class ViewCarro extends javax.swing.JFrame implements Viewable {
 
     @Override
     public void limpaCamposDeEntrada() {
-        jTMarca.setText("");
-        jTModelo.setText("");
-        jTPlaca.setText("");
-        jTCor.setText("");
-        jTIdApartamento.setText("");
+        this._HANDLER_JANELA.limparListaDeInput(new javax.swing.JTextField[]{
+            jTId,
+            jTMarca,
+            jTModelo,
+            jTPlaca,
+            jTCor,
+            jTIdApartamento
+        });
+
         jTMarca.requestFocus();
     }
     
@@ -58,7 +63,7 @@ public class ViewCarro extends javax.swing.JFrame implements Viewable {
         if(atualizaOId) {
             int idCarro = Integer.parseInt(jTId.getText().trim());
 
-            this._modelo.setIdCarro(idCarro);
+            this._MODELO.setIdCarro(idCarro);
         }
 
         String marca = jTMarca.getText().trim();
@@ -67,15 +72,16 @@ public class ViewCarro extends javax.swing.JFrame implements Viewable {
         String cor = jTCor.getText().trim();
         int idApartamento = Integer.parseInt(jTIdApartamento.getText().trim());
 
-        this._modelo.setMarca(marca);
-        this._modelo.setModelo(modeloCarro);
-        this._modelo.setPlaca(placa);
-        this._modelo.setCor(cor);
-        this._modelo.setIdApartamento(idApartamento);
+        this._MODELO.setMarca(marca);
+        this._MODELO.setModelo(modeloCarro);
+        this._MODELO.setPlaca(placa);
+        this._MODELO.setCor(cor);
+        this._MODELO.setIdApartamento(idApartamento);
     }
 
-    private final ModelCarro _modelo;
-    private final DAOCarros _dao;
+    private final HandlerJanela _HANDLER_JANELA = new HandlerJanela();
+    private final ModelCarro _MODELO;
+    private final DAOCarros _DAO;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -129,6 +135,7 @@ public class ViewCarro extends javax.swing.JFrame implements Viewable {
                 return canEdit [columnIndex];
             }
         });
+        jTabela.getTableHeader().setReorderingAllowed(false);
         jTabela.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTabelaMouseClicked(evt);
@@ -315,33 +322,26 @@ public class ViewCarro extends javax.swing.JFrame implements Viewable {
     private void jBInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInserirActionPerformed
         atualizaValoresModelo(false);
 
-        this._dao.Inserir(this._modelo);
+        this._DAO.Inserir(this._MODELO);
 
         atualizaJanela();
     }//GEN-LAST:event_jBInserirActionPerformed
 
     private void jTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaMouseClicked
-        if (jTabela.getSelectedRow() != -1) {
-            String selectedIdCarro = jTabela.getValueAt(jTabela.getSelectedRow(),0).toString();
-            String selectedMarca = jTabela.getValueAt(jTabela.getSelectedRow(),1).toString();
-            String selectedModelo = jTabela.getValueAt(jTabela.getSelectedRow(),2).toString();
-            String selectedPlaca = jTabela.getValueAt(jTabela.getSelectedRow(),3).toString();
-            String selectedCor = jTabela.getValueAt(jTabela.getSelectedRow(),4).toString();
-            String selectedIdApartamento = jTabela.getValueAt(jTabela.getSelectedRow(),5).toString();
-
-            jTId.setText(selectedIdCarro);
-            jTMarca.setText(selectedMarca);
-            jTModelo.setText(selectedModelo);
-            jTPlaca.setText(selectedPlaca);
-            jTCor.setText(selectedCor);
-            jTIdApartamento.setText(selectedIdApartamento);
-        }
+        this._HANDLER_JANELA.atulizarListaDeInputRelacionadoTabela(new javax.swing.JTextField[]{
+            jTId,
+            jTMarca,
+            jTModelo,
+            jTPlaca,
+            jTCor,
+            jTIdApartamento
+        }, jTabela);
     }//GEN-LAST:event_jTabelaMouseClicked
 
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
         atualizaValoresModelo(true);
 
-        this._dao.Alterar(this._modelo);
+        this._DAO.Alterar(this._MODELO);
 
         atualizaJanela();
     }//GEN-LAST:event_jBAlterarActionPerformed
@@ -349,7 +349,7 @@ public class ViewCarro extends javax.swing.JFrame implements Viewable {
     private void jBDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeletarActionPerformed
         atualizaValoresModelo(true);
 
-        this._dao.Deletar(this._modelo);
+        this._DAO.Deletar(this._MODELO);
 
         atualizaJanela();
     }//GEN-LAST:event_jBDeletarActionPerformed

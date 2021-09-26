@@ -8,20 +8,8 @@ import net.sf.jasperreports.view.JasperViewer;
 
 import common.handlers.HandlerJanela;
 import common.handlers.HandlerConexao;
-import condominio.models.ModelAgenda;
-import condominio.models.ModelApartamento;
-import condominio.models.ModelAreaLazer;
-import condominio.models.ModelBloco;
-import condominio.models.ModelCarro;
-import condominio.models.ModelCorreio;
-import condominio.models.ModelProprietario;
-import condominio.daos.DAOAgendas;
-import condominio.daos.DAOApartamentos;
-import condominio.daos.DAOAreasLazer;
-import condominio.daos.DAOBlocos;
-import condominio.daos.DAOCarros;
-import condominio.daos.DAOCorreios;
-import condominio.daos.DAOProprietarios;
+import condominio.models.*;
+import condominio.daos.*;
 
 /**
  *
@@ -40,8 +28,7 @@ public class ViewHome extends javax.swing.JFrame {
             File arquivoJasper = new File(caminhoRelativoPastaRelatorio + nomeRelatorio + ".jasper");
 
             return JasperFillManager.fillReport(arquivoJasper.getAbsolutePath(), null, con);
-        } catch (Exception e) {
-        }
+        } catch (Exception e) { }
 
         return null;
     }
@@ -60,22 +47,33 @@ public class ViewHome extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMSAgenda = new javax.swing.JMenuItem();
+        jMSSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMSApartamentos = new javax.swing.JMenuItem();
-        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        jMSSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMSAreasLazer = new javax.swing.JMenuItem();
-        jMSCorreios = new javax.swing.JMenuItem();
-        jMSProprietarios = new javax.swing.JMenuItem();
-        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        jMSSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMSBlocos = new javax.swing.JMenuItem();
-        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jMSSeparator4 = new javax.swing.JPopupMenu.Separator();
+        jMSCorreios = new javax.swing.JMenuItem();
+        jMSSeparator5 = new javax.swing.JPopupMenu.Separator();
+        jMSFuncionarios = new javax.swing.JMenuItem();
+        jMSSeparator6 = new javax.swing.JPopupMenu.Separator();
         jMSGaragens = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMSSeparator7 = new javax.swing.JPopupMenu.Separator();
+        jMSMoradores = new javax.swing.JMenuItem();
+        jMSSeparator8 = new javax.swing.JPopupMenu.Separator();
+        jMSProprietarios = new javax.swing.JMenuItem();
+        jMSSeparator9 = new javax.swing.JPopupMenu.Separator();
+        jMSServicos = new javax.swing.JMenuItem();
+        jMSSeparator10 = new javax.swing.JPopupMenu.Separator();
         jMSCarros = new javax.swing.JMenuItem();
+        jMSSeparator11 = new javax.swing.JPopupMenu.Separator();
+        jMSTorres = new javax.swing.JMenuItem();
         jMRApartamento = new javax.swing.JMenu();
         jMRApartamentos = new javax.swing.JMenuItem();
-        jSeparator6 = new javax.swing.JPopupMenu.Separator();
+        jMRSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMRProprietarios = new javax.swing.JMenuItem();
-        jSeparator5 = new javax.swing.JPopupMenu.Separator();
+        jMRSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
 
@@ -90,6 +88,7 @@ public class ViewHome extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMSAgenda);
+        jMenu1.add(jMSSeparator1);
 
         jMSApartamentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/building.png"))); // NOI18N
         jMSApartamentos.setText("Apartamentos");
@@ -99,7 +98,7 @@ public class ViewHome extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMSApartamentos);
-        jMenu1.add(jSeparator4);
+        jMenu1.add(jMSSeparator2);
 
         jMSAreasLazer.setText("Areas de Lazer");
         jMSAreasLazer.addActionListener(new java.awt.event.ActionListener() {
@@ -108,25 +107,7 @@ public class ViewHome extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMSAreasLazer);
-
-        jMSCorreios.setText("Correios");
-        jMSCorreios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMSCorreios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMSCorreiosActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMSCorreios);
-
-        jMSProprietarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/prop.png"))); // NOI18N
-        jMSProprietarios.setText("Proprietarios");
-        jMSProprietarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMSProrietariosActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMSProprietarios);
-        jMenu1.add(jSeparator3);
+        jMenu1.add(jMSSeparator3);
 
         jMSBlocos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/bloco.png"))); // NOI18N
         jMSBlocos.setText("Blocos");
@@ -136,7 +117,26 @@ public class ViewHome extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMSBlocos);
-        jMenu1.add(jSeparator2);
+        jMenu1.add(jMSSeparator4);
+
+        jMSCorreios.setText("Correios");
+        jMSCorreios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jMSCorreios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMSCorreiosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMSCorreios);
+        jMenu1.add(jMSSeparator5);
+
+        jMSFuncionarios.setText("Funcionários");
+        jMSFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMSFuncionariosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMSFuncionarios);
+        jMenu1.add(jMSSeparator6);
 
         jMSGaragens.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/garage.png"))); // NOI18N
         jMSGaragens.setText("Garagens");
@@ -146,7 +146,35 @@ public class ViewHome extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMSGaragens);
-        jMenu1.add(jSeparator1);
+        jMenu1.add(jMSSeparator7);
+
+        jMSMoradores.setText("Moradores");
+        jMSMoradores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMSMoradoresActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMSMoradores);
+        jMenu1.add(jMSSeparator8);
+
+        jMSProprietarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/prop.png"))); // NOI18N
+        jMSProprietarios.setText("Proprietarios");
+        jMSProprietarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMSProrietariosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMSProprietarios);
+        jMenu1.add(jMSSeparator9);
+
+        jMSServicos.setText("Serviços");
+        jMSServicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMSServicosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMSServicos);
+        jMenu1.add(jMSSeparator10);
 
         jMSCarros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/car.png"))); // NOI18N
         jMSCarros.setText("Veículos");
@@ -156,6 +184,15 @@ public class ViewHome extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMSCarros);
+        jMenu1.add(jMSSeparator11);
+
+        jMSTorres.setText("Torres");
+        jMSTorres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMSTorresActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMSTorres);
 
         jMenuBar1.add(jMenu1);
 
@@ -168,7 +205,7 @@ public class ViewHome extends javax.swing.JFrame {
             }
         });
         jMRApartamento.add(jMRApartamentos);
-        jMRApartamento.add(jSeparator6);
+        jMRApartamento.add(jMRSeparator1);
 
         jMRProprietarios.setText("Proprietarios");
         jMRProprietarios.addActionListener(new java.awt.event.ActionListener() {
@@ -177,13 +214,13 @@ public class ViewHome extends javax.swing.JFrame {
             }
         });
         jMRApartamento.add(jMRProprietarios);
-        jMRApartamento.add(jSeparator5);
+        jMRApartamento.add(jMRSeparator2);
 
         jMenuBar1.add(jMRApartamento);
 
         jMenu3.setText("Sair");
 
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/condominio/views/exit.png"))); // NOI18N
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view/icons/exit.png"))); // NOI18N
         jMenuItem7.setText("Sair");
         jMenu3.add(jMenuItem7);
 
@@ -252,7 +289,10 @@ public class ViewHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jMSCarrosActionPerformed
 
     private void jMSGaragensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSGaragensActionPerformed
-        
+        ViewGaragem viewGaragem = new ViewGaragem(new ModelGaragem(), new DAOGaragens());
+
+        this._handlerJanela.configurarJanela(viewGaragem);
+        this._handlerJanela.rederizarJanela(viewGaragem);
     }//GEN-LAST:event_jMSGaragensActionPerformed
 
     private void jMSAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSAgendaActionPerformed
@@ -275,6 +315,34 @@ public class ViewHome extends javax.swing.JFrame {
         this._handlerJanela.configurarJanela(viewCorreio);
         this._handlerJanela.rederizarJanela(viewCorreio);
     }//GEN-LAST:event_jMSCorreiosActionPerformed
+
+    private void jMSFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSFuncionariosActionPerformed
+        ViewFuncionario viewFuncionario = new ViewFuncionario(new ModelFuncionario(), new DAOFuncionarios());
+
+        this._handlerJanela.configurarJanela(viewFuncionario);
+        this._handlerJanela.rederizarJanela(viewFuncionario);
+    }//GEN-LAST:event_jMSFuncionariosActionPerformed
+
+    private void jMSMoradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSMoradoresActionPerformed
+        ViewMorador viewMorador = new ViewMorador(new ModelMorador(), new DAOMoradores());
+
+        this._handlerJanela.configurarJanela(viewMorador);
+        this._handlerJanela.rederizarJanela(viewMorador);
+    }//GEN-LAST:event_jMSMoradoresActionPerformed
+
+    private void jMSServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSServicosActionPerformed
+        ViewServico viewServico = new ViewServico(new ModelServico(), new DAOServicos());
+
+        this._handlerJanela.configurarJanela(viewServico);
+        this._handlerJanela.rederizarJanela(viewServico);
+    }//GEN-LAST:event_jMSServicosActionPerformed
+
+    private void jMSTorresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSTorresActionPerformed
+        ViewTorre viewTorre = new ViewTorre(new ModelTorre(), new DAOTorres());
+
+        this._handlerJanela.configurarJanela(viewTorre);
+        this._handlerJanela.rederizarJanela(viewTorre);
+    }//GEN-LAST:event_jMSTorresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -308,23 +376,34 @@ public class ViewHome extends javax.swing.JFrame {
     private javax.swing.JMenu jMRApartamento;
     private javax.swing.JMenuItem jMRApartamentos;
     private javax.swing.JMenuItem jMRProprietarios;
+    private javax.swing.JPopupMenu.Separator jMRSeparator1;
+    private javax.swing.JPopupMenu.Separator jMRSeparator2;
     private javax.swing.JMenuItem jMSAgenda;
     private javax.swing.JMenuItem jMSApartamentos;
     private javax.swing.JMenuItem jMSAreasLazer;
     private javax.swing.JMenuItem jMSBlocos;
     private javax.swing.JMenuItem jMSCarros;
     private javax.swing.JMenuItem jMSCorreios;
+    private javax.swing.JMenuItem jMSFuncionarios;
     private javax.swing.JMenuItem jMSGaragens;
+    private javax.swing.JMenuItem jMSMoradores;
     private javax.swing.JMenuItem jMSProprietarios;
+    private javax.swing.JPopupMenu.Separator jMSSeparator1;
+    private javax.swing.JPopupMenu.Separator jMSSeparator10;
+    private javax.swing.JPopupMenu.Separator jMSSeparator11;
+    private javax.swing.JPopupMenu.Separator jMSSeparator2;
+    private javax.swing.JPopupMenu.Separator jMSSeparator3;
+    private javax.swing.JPopupMenu.Separator jMSSeparator4;
+    private javax.swing.JPopupMenu.Separator jMSSeparator5;
+    private javax.swing.JPopupMenu.Separator jMSSeparator6;
+    private javax.swing.JPopupMenu.Separator jMSSeparator7;
+    private javax.swing.JPopupMenu.Separator jMSSeparator8;
+    private javax.swing.JPopupMenu.Separator jMSSeparator9;
+    private javax.swing.JMenuItem jMSServicos;
+    private javax.swing.JMenuItem jMSTorres;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JPopupMenu.Separator jSeparator2;
-    private javax.swing.JPopupMenu.Separator jSeparator3;
-    private javax.swing.JPopupMenu.Separator jSeparator4;
-    private javax.swing.JPopupMenu.Separator jSeparator5;
-    private javax.swing.JPopupMenu.Separator jSeparator6;
     // End of variables declaration//GEN-END:variables
 }

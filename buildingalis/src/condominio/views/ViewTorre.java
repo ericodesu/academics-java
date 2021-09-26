@@ -4,15 +4,15 @@ import javax.swing.table.DefaultTableModel;
 
 import common.handlers.HandlerJanela;
 import common.interfaces.Viewable;
-import condominio.models.ModelCorreio;
-import condominio.daos.DAOCorreios;
+import condominio.models.ModelTorre;
+import condominio.daos.DAOTorres;
 
 /**
  *
  * @author Erick Frederick
  */
-public class ViewCorreio extends javax.swing.JFrame implements Viewable {
-    public ViewCorreio(ModelCorreio injectedModel, DAOCorreios injectedDao) {
+public class ViewTorre extends javax.swing.JFrame implements Viewable {
+    public ViewTorre(ModelTorre injectedModel, DAOTorres injectedDao) {
         this._MODELO = injectedModel;
         this._DAO = injectedDao;
 
@@ -28,9 +28,8 @@ public class ViewCorreio extends javax.swing.JFrame implements Viewable {
 
         this._DAO.Listar().forEach((ap) -> {
             tabela.addRow(new Object[]{
-                ap.getIdCorreio(),
-                ap.getCodigoDocumento(),
-                ap.getIdMorador()
+                ap.getIdTorre(),
+                ap.getNumero()
             });
         });
     }
@@ -39,11 +38,10 @@ public class ViewCorreio extends javax.swing.JFrame implements Viewable {
     public void limpaCamposDeEntrada() {
         this._HANDLER_JANELA.limparListaDeInput(new javax.swing.JTextField[]{
             jTId,
-            jTCodigoDocumento,
-            jTIdMorador
+            jTNumero
         });
 
-        jTCodigoDocumento.requestFocus();
+        jTNumero.requestFocus();
     }
 
     @Override
@@ -55,21 +53,19 @@ public class ViewCorreio extends javax.swing.JFrame implements Viewable {
     @Override
     public void atualizaValoresModelo(Boolean atualizaOId) {
         if(atualizaOId) {
-            int idCorreio = Integer.parseInt(jTId.getText().trim());
+            int idTorre = Integer.parseInt(jTId.getText().trim());
 
-            this._MODELO.setIdCorreio(idCorreio);
+            this._MODELO.setIdTorre(idTorre);
         }
 
-        int codigoDocumento = Integer.parseInt(jTCodigoDocumento.getText().trim());
-        int idMorador = Integer.parseInt(jTIdMorador.getText().trim());
+        int idNumero = Integer.parseInt(jTNumero.getText().trim());
 
-        this._MODELO.setCodigoDocumento(codigoDocumento);
-        this._MODELO.setIdMorador(idMorador);
+        this._MODELO.setNumero(idNumero);
     }
 
     private final HandlerJanela _HANDLER_JANELA = new HandlerJanela();
-    private final ModelCorreio _MODELO;
-    private final DAOCorreios _DAO;
+    private final ModelTorre _MODELO;
+    private final DAOTorres _DAO;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,11 +79,9 @@ public class ViewCorreio extends javax.swing.JFrame implements Viewable {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabela = new javax.swing.JTable();
         jLId = new javax.swing.JLabel();
-        jLCodigoDoc = new javax.swing.JLabel();
-        jLIdMorador = new javax.swing.JLabel();
+        jLNumero = new javax.swing.JLabel();
         jTId = new javax.swing.JTextField();
-        jTCodigoDocumento = new javax.swing.JTextField();
-        jTIdMorador = new javax.swing.JTextField();
+        jTNumero = new javax.swing.JTextField();
         jBInserir = new javax.swing.JButton();
         jBAlterar = new javax.swing.JButton();
         jBDeletar = new javax.swing.JButton();
@@ -99,14 +93,14 @@ public class ViewCorreio extends javax.swing.JFrame implements Viewable {
 
             },
             new String [] {
-                "ID", "Código Documento", "ID Morador"
+                "ID", "Número"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -127,41 +121,32 @@ public class ViewCorreio extends javax.swing.JFrame implements Viewable {
         if (jTabela.getColumnModel().getColumnCount() > 0) {
             jTabela.getColumnModel().getColumn(0).setResizable(false);
             jTabela.getColumnModel().getColumn(1).setResizable(false);
-            jTabela.getColumnModel().getColumn(2).setResizable(false);
         }
 
         jLId.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
         jLId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLId.setText("ID");
 
-        jLCodigoDoc.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
-        jLCodigoDoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLCodigoDoc.setText("Código Documento");
-
-        jLIdMorador.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
-        jLIdMorador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLIdMorador.setText("ID Morador");
+        jLNumero.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
+        jLNumero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLNumero.setText("Número");
 
         jTId.setEditable(false);
         jTId.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         jTId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTId.setBorder(null);
 
-        jTCodigoDocumento.setBackground(new java.awt.Color(207, 207, 207));
-        jTCodigoDocumento.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        jTCodigoDocumento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTCodigoDocumento.setBorder(null);
-
-        jTIdMorador.setBackground(new java.awt.Color(207, 207, 207));
-        jTIdMorador.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        jTIdMorador.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTIdMorador.setBorder(null);
+        jTNumero.setBackground(new java.awt.Color(207, 207, 207));
+        jTNumero.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+        jTNumero.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTNumero.setBorder(null);
 
         jBInserir.setBackground(new java.awt.Color(85, 179, 59));
         jBInserir.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
         jBInserir.setForeground(new java.awt.Color(232, 232, 232));
         jBInserir.setText("Inserir");
         jBInserir.setBorder(null);
+        jBInserir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBInserirActionPerformed(evt);
@@ -171,7 +156,7 @@ public class ViewCorreio extends javax.swing.JFrame implements Viewable {
         jBAlterar.setBackground(new java.awt.Color(82, 82, 82));
         jBAlterar.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
         jBAlterar.setForeground(new java.awt.Color(232, 232, 232));
-        jBAlterar.setText("Alterar");
+        jBAlterar.setText("Altera");
         jBAlterar.setBorder(null);
         jBAlterar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBAlterar.addActionListener(new java.awt.event.ActionListener() {
@@ -199,49 +184,41 @@ public class ViewCorreio extends javax.swing.JFrame implements Viewable {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLCodigoDoc, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
-                    .addComponent(jLId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLIdMorador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTId, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTCodigoDocumento, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTIdMorador, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBInserir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(65, 65, 65)
-                        .addComponent(jBAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(65, 65, 65)
-                        .addComponent(jBDeletar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBInserir, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                        .addGap(51, 51, 51)
+                        .addComponent(jBAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                        .addGap(59, 59, 59)
+                        .addComponent(jBDeletar, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                    .addComponent(jLId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLNumero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTId)
+                    .addComponent(jTNumero))
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLId)
-                        .addGap(35, 35, 35)
-                        .addComponent(jTId, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(jLCodigoDoc)
-                        .addGap(35, 35, 35)
-                        .addComponent(jTCodigoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(jLIdMorador)
-                        .addGap(35, 35, 35)
-                        .addComponent(jTIdMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jBInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35))))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLId)
+                .addGap(60, 60, 60)
+                .addComponent(jTId, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(jLNumero)
+                .addGap(60, 60, 60)
+                .addComponent(jTNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -274,8 +251,7 @@ public class ViewCorreio extends javax.swing.JFrame implements Viewable {
     private void jTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaMouseClicked
         this._HANDLER_JANELA.atulizarListaDeInputRelacionadoTabela(new javax.swing.JTextField[]{
             jTId,
-            jTCodigoDocumento,
-            jTIdMorador
+            jTNumero
         }, jTabela);
     }//GEN-LAST:event_jTabelaMouseClicked
 
@@ -296,13 +272,13 @@ public class ViewCorreio extends javax.swing.JFrame implements Viewable {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewCorreio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewTorre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewCorreio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewTorre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewCorreio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewTorre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewCorreio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewTorre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
     }
@@ -311,13 +287,11 @@ public class ViewCorreio extends javax.swing.JFrame implements Viewable {
     private javax.swing.JButton jBAlterar;
     private javax.swing.JButton jBDeletar;
     private javax.swing.JButton jBInserir;
-    private javax.swing.JLabel jLCodigoDoc;
     private javax.swing.JLabel jLId;
-    private javax.swing.JLabel jLIdMorador;
+    private javax.swing.JLabel jLNumero;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTCodigoDocumento;
     private javax.swing.JTextField jTId;
-    private javax.swing.JTextField jTIdMorador;
+    private javax.swing.JTextField jTNumero;
     private javax.swing.JTable jTabela;
     // End of variables declaration//GEN-END:variables
 }

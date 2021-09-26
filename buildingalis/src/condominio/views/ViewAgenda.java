@@ -1,8 +1,10 @@
 package condominio.views;
 
-import javax.swing.table.DefaultTableModel;
 import java.sql.Date;
+import javax.swing.table.DefaultTableModel;
 
+import common.handlers.HandlerJanela;
+import common.handlers.HandlerInput;
 import common.interfaces.Viewable;
 import condominio.models.ModelAgenda;
 import condominio.daos.DAOAgendas;
@@ -13,8 +15,8 @@ import condominio.daos.DAOAgendas;
  */
 public class ViewAgenda extends javax.swing.JFrame implements Viewable {
     public ViewAgenda(ModelAgenda injectedModel, DAOAgendas injectedDao) {
-        this._modelo = injectedModel;
-        this._dao = injectedDao;
+        this._MODELO = injectedModel;
+        this._DAO = injectedDao;
 
         initComponents();
         hidrataTabela();
@@ -26,7 +28,7 @@ public class ViewAgenda extends javax.swing.JFrame implements Viewable {
 
         tabela.setNumRows(0);
 
-        this._dao.Listar().forEach((ap) -> {
+        this._DAO.Listar().forEach((ap) -> {
             tabela.addRow(new Object[]{
                 ap.getIdAgenda(),
                 ap.getData(),
@@ -37,9 +39,12 @@ public class ViewAgenda extends javax.swing.JFrame implements Viewable {
 
     @Override
     public void limpaCamposDeEntrada() {
-        jTId.setText("");
-        jTDataRegistro.setText("");
-        jTMorador.setText("");
+        this._HANDLER_JANELA.limparListaDeInput(new javax.swing.JTextField[]{
+            jTId,
+            jTDataRegistro,
+            jTIdMorador
+        });
+
         jTDataRegistro.requestFocus();
     }
     
@@ -54,18 +59,20 @@ public class ViewAgenda extends javax.swing.JFrame implements Viewable {
         if(atualizaOId) {
             int idAgenda = Integer.parseInt(jTId.getText().trim());
 
-            this._modelo.setIdAgenda(idAgenda);
+            this._MODELO.setIdAgenda(idAgenda);
         }
 
-        String dataRegistro = jTDataRegistro.getText().trim().replace("/", "-");
-        int idMorador = Integer.parseInt(jTMorador.getText().trim());
+        String dataRegistro = this._HANDLER_INPUT.higienizarData(jTDataRegistro.getText().trim());
+        int idMorador = Integer.parseInt(jTIdMorador.getText().trim());
 
-        this._modelo.setData(Date.valueOf(dataRegistro));
-        this._modelo.setIdMorador(idMorador);
+        this._MODELO.setData(Date.valueOf(dataRegistro));
+        this._MODELO.setIdMorador(idMorador);
     }
  
-    private final ModelAgenda _modelo;
-    private final DAOAgendas _dao;
+    private final HandlerJanela _HANDLER_JANELA = new HandlerJanela();
+    private final HandlerInput _HANDLER_INPUT = new HandlerInput();
+    private final ModelAgenda _MODELO;
+    private final DAOAgendas _DAO;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,7 +86,7 @@ public class ViewAgenda extends javax.swing.JFrame implements Viewable {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabela = new javax.swing.JTable();
         jTId = new javax.swing.JTextField();
-        jTMorador = new javax.swing.JTextField();
+        jTIdMorador = new javax.swing.JTextField();
         jLId = new javax.swing.JLabel();
         jLDataRegistro = new javax.swing.JLabel();
         jLMorador = new javax.swing.JLabel();
@@ -140,10 +147,10 @@ public class ViewAgenda extends javax.swing.JFrame implements Viewable {
         jTId.setFocusable(false);
         jTId.setSelectedTextColor(new java.awt.Color(240, 240, 240));
 
-        jTMorador.setBackground(new java.awt.Color(207, 207, 207));
-        jTMorador.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
-        jTMorador.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTMorador.setBorder(null);
+        jTIdMorador.setBackground(new java.awt.Color(207, 207, 207));
+        jTIdMorador.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
+        jTIdMorador.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTIdMorador.setBorder(null);
 
         jLId.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
         jLId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -215,13 +222,13 @@ public class ViewAgenda extends javax.swing.JFrame implements Viewable {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jBGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                        .addComponent(jBAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                        .addComponent(jBDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jBGravar, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                        .addGap(58, 58, 58)
+                        .addComponent(jBAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                        .addGap(58, 58, 58)
+                        .addComponent(jBDeletar, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                     .addComponent(jTId, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTMorador, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTIdMorador, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,8 +254,8 @@ public class ViewAgenda extends javax.swing.JFrame implements Viewable {
                 .addGap(45, 45, 45)
                 .addComponent(jLMorador)
                 .addGap(45, 45, 45)
-                .addComponent(jTMorador, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                .addGap(45, 45, 45)
+                .addComponent(jTIdMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -266,7 +273,7 @@ public class ViewAgenda extends javax.swing.JFrame implements Viewable {
     private void jBGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGravarActionPerformed
         atualizaValoresModelo(false);
 
-        this._dao.Inserir(this._modelo);
+        this._DAO.Inserir(this._MODELO);
 
         atualizaJanela();
     }//GEN-LAST:event_jBGravarActionPerformed
@@ -274,27 +281,23 @@ public class ViewAgenda extends javax.swing.JFrame implements Viewable {
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
         atualizaValoresModelo(true);
 
-        this._dao.Alterar(this._modelo);
+        this._DAO.Alterar(this._MODELO);
 
         atualizaJanela();
     }//GEN-LAST:event_jBAlterarActionPerformed
 
     private void jTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaMouseClicked
-        if (jTabela.getSelectedRow() != -1) {
-            String selectedIdAgenda = jTabela.getValueAt(jTabela.getSelectedRow(),0).toString();
-            String selectedDataDeRegistro = jTabela.getValueAt(jTabela.getSelectedRow(),1).toString().replace("-", "");
-            String selectedIdMorador = jTabela.getValueAt(jTabela.getSelectedRow(),2).toString();
-
-            jTId.setText(selectedIdAgenda);
-            jTDataRegistro.setText(selectedDataDeRegistro);
-            jTMorador.setText(selectedIdMorador);
-        }
+        this._HANDLER_JANELA.atulizarListaDeInputRelacionadoTabela(new javax.swing.JTextField[]{
+            jTId,
+            jTDataRegistro,
+            jTIdMorador
+        }, jTabela);
     }//GEN-LAST:event_jTabelaMouseClicked
 
     private void jBDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeletarActionPerformed
         atualizaValoresModelo(true);
 
-        this._dao.Deletar(this._modelo);
+        this._DAO.Deletar(this._MODELO);
 
         atualizaJanela();
     }//GEN-LAST:event_jBDeletarActionPerformed
@@ -338,7 +341,7 @@ public class ViewAgenda extends javax.swing.JFrame implements Viewable {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JFormattedTextField jTDataRegistro;
     private javax.swing.JTextField jTId;
-    private javax.swing.JTextField jTMorador;
+    private javax.swing.JTextField jTIdMorador;
     private javax.swing.JTable jTabela;
     // End of variables declaration//GEN-END:variables
 }
