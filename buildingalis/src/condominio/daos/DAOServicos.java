@@ -59,7 +59,7 @@ public class DAOServicos implements CRUDable<ModelServico> {
 
     @Override
     public void Deletar(ModelServico modelo) {
-        String query = "DELETE FROM servico WHERE id_servico=?";
+        String query = "DELETE FROM servicos WHERE id_servico=?";
 
         try {
             this._stmt = this._CONEXAO.prepareStatement(query);
@@ -89,7 +89,7 @@ public class DAOServicos implements CRUDable<ModelServico> {
 	        ModelServico modelo = new ModelServico();
 
                 modelo.setDescricao(this._rs.getString("descricao"));
-                modelo.setIdFuncionario(this._rs.getInt("funcionario"));
+                modelo.setIdFuncionario(this._rs.getInt("id_funcionario"));
                 modelo.setLocalizacao(this._rs.getString("localizacao"));
                 modelo.setIdServico(this._rs.getInt("id_servico"));
 
