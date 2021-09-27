@@ -26,7 +26,7 @@ public class HandlerRelatorio {
 
     public void renderizarRelatorio(JasperPrint relatorio){
         try {
-            JasperViewer.viewReport(relatorio);
+            JasperViewer.viewReport(relatorio, false);
         } catch (Exception e) { }
     }
 }
